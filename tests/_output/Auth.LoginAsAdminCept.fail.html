@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="ru" class="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- meta name="viewport" content="width=device-width, initial-scale=0.8" -->
+<title>Вход в систему - Calltouch</title>
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
+<link rel="stylesheet" href="/resources/modx/css/roboto.new.css">
+<link rel="stylesheet" href="/resources/modx/css/auth.css" />
+
+<link rel="stylesheet" href="/resources/modx/css/material/material.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+
+<script                 src="/resources/modx/css/material/material.min.js"></script>
+
+<!--[if IE]>
+<script src="//cdnjs.cloudflare.com/ajax/libs/es5-shim/4.1.7/es5-shim.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/classlist/2014.01.31/classList.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/selectivizr/1.0.2/selectivizr-min.js"></script>
+<![endif]-->
+
+<script type="text/javascript" src="/resources/jquery-ui-1.10.3.custom/js/jquery-1.9.1.js"></script>
+<script type="text/javascript" src="/resources/js/jquery-migrate-1.0.0.js"></script>
+<script src="https://www.google.com/recaptcha/api.js?hl=ru" async defer></script>
+
+
+<script>
+var V = {
+    errorMessage: {
+        username:  0
+    }
+};
+    
+//
+//
+(function(){
+    setTimeout(function() {//SHIT HACK TODO
+        if ( V.errorMessage.username ) {
+            $('#j_username').parent().addClass('is-invalid');
+        }
+    }, 1000);
+})();
+</script>
+
+
+</head>
+<body class="dark">
+<!-- Google Tag Manager -->
+<noscript>&lt;iframe src="//www.googletagmanager.com/ns.html?id=GTM-WSVDK9" height="0" width="0" style="display:none;visibility:hidden"&gt;&lt;/iframe&gt;</noscript>
+<script>
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-WSVDK9');
+</script>
+<!-- End Google Tag Manager -->
+
+<div class="wrapper">
+    <div class="block_login mdl-color--blue-grey-800">
+<style>
+input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
+    background: transparent !important;
+    background-image: none;
+   /* color: rgb(0, 0, 0);*/
+}
+</style>
+        <div class="login_content">
+        <form action="/do-login" method="post">
+            <h2>Рады видеть, что вы с нами</h2>
+            <!-- input tabindex="0" type="text" id="j_username" style="visibility: hidden" -->
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input tabindex="1" type="text" id="j_username" name="j_username" class="mdl-textfield__input">
+                <label for="j_username" class="mdl-textfield__label">Логин или e-mail</label>
+
+                <span class="mdl-textfield__error"></span>
+
+            </div>
+
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input tabindex="2" type="password" id="j_password" name="j_password" class="mdl-textfield__input">
+                <label for="j_password" class="mdl-textfield__label">Пароль</label>
+            </div>
+
+            <div class="block_submit">
+                <div class="block_button">
+                    <input tabindex="4" type="submit" value="Войти" class="mdl-button mdl-js-button mdl-button--raised  mdl-js-ripple-effect mdl-button--accent" />
+                </div>
+
+                <div class="block_checkbox">
+                    <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="rememberMe">
+                        <input tabindex="3" type="checkbox" id="rememberMe" name="j_remember" class="mdl-checkbox__input" checked />
+                        <span class="mdl-checkbox__label">Запомнить меня</span>
+                    </label>
+                </div>
+                
+            </div>
+            
+            <div class="descriptive_text" style="margin-top: 20px;">
+                <p>Не используете Calltouch? <a href="/registration">Попробуйте!</a></p>
+                <p><a href="/reset-password">Восстановить пароль</a></p>
+            </div>
+            
+        </form>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+    
+    <div class="block_content bg_3" from_ext_site="">
+        <div style="padding-right: 502px;">
+            <div class="main">
+            <div class="logotype white"></div>
+            <h1>Сервис аналитики и управления интернет-рекламой<br />на базе коллтрекинга</h1>
+
+            </div>
+
+        </div>
+
+        <div class="block_footer"></div>
+        <div class="block_footer_content">
+            <div class="inline-item social">
+                <a target="_blank" class="facebook" href="//www.facebook.com/CallTouch"></a>
+                <a target="_blank" class="vk"       href="//vk.com/calltouch"></a>
+                <a target="_blank" class="youtube"  href="//www.youtube.com/c/calltouchru"></a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
