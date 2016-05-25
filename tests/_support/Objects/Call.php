@@ -15,30 +15,45 @@ class Call {
     public $id;
     public $source;
     public $medium;
-    public $beginDuration;
-    public $endDuration;
+    public $durationLower;
+    public $durationUpper;
     public $numOfCalls;
+    public $calls;
+    
     
     public $callTag;
     public $phoneCaller;
     public $whereCalled;
     
     
-    public static function createCall(array $callsData){
-        $call = new static;
-        $call->setSource($callsData['source']);
-        $call->setMedium($callsData['medium']);
-        $call->setBeginDuration($callsData['duration_low']);
-        $call->setEndDuration($callsData['duration_up']);
+    public static function createCallsFilter(array $callsFilterData){
+        $callsDiaryFilter = new static;
+        $callsDiaryFilter->setSource($callsFilterData['source']);
+        $callsDiaryFilter->setMedium($callsFilterData['medium']);
+        $callsDiaryFilter->setDurationLower($callsFilterData['duration_low']);
+        $callsDiaryFilter->setDurationUpper($callsFilterData['duration_up']);
         
-        if(isset($callsData['num_of_calls']))
-            $call->setNumOfCalls($callsData['num_of_calls']);
-        return $call;
+        if(isset($callsFilterData['num_of_calls']))
+            $callsDiaryFilter->setNumOfCalls($callsFilterData['num_of_calls']);
+        
+        if(isset($callsFilterData['calls']))
+            $callsDiaryFilter->setCalls ($callsFilterData['calls']);
+        
+        return $callsDiaryFilter;
     }
     
+    public static function createCalls(array $callsFilterData){
+        $calls = new static;
+        $calls->setId($callsFilterData['id']);
+        $calls->setPhoneCaller($callsFilterData['ani']);
+        $calls->setWhereCalled($callsFilterData['phone_number']);
+        
+        return $calls;
+    }
     
 
     
+
     public  function setId($id){
         $this->id = $id;
     }
@@ -66,18 +81,41 @@ class Call {
         return $this->numOfCalls;
     }
     
-    public  function setBeginDuration($beginDuration){
-        $this->beginDuration = $beginDuration;
+    public  function setDurationLower($durationLower){
+        $this->durationLower = $durationLower;
     }
-    public function getBeginDuration() {
-        return $this->beginDuration;
+    public function getDurationLower() {
+        return $this->durationLower;
     }
     
-    public  function setEndDuration($endDuration){
-        $this->endDuration = $endDuration;
+    public  function setDurationUpper($durationUpper){
+        $this->durationUpper = $durationUpper;
     }
-    public function getEndDuration() {
-        return $this->endDuration;
+    public function getDurationUpper() {
+        return $this->durationUpper;
     }
+    
+    
+    public  function setPhoneCaller($phoneCaller){
+        $this->phoneCaller = $phoneCaller;
+    }
+    public function getPhoneCaller() {
+        return $this->phoneCaller;
+    }
+    
+    public  function setWhereCalled($whereCalled){
+        $this->whereCalled = $whereCalled;
+    }
+    public function getWhereCalled() {
+        return $this->whereCalled;
+    }
+    
+        public  function setCalls(array $calls){
+        $this->calls = $calls;
+    }
+    public function getCalls() {
+        return $this->calls;
+    }
+    
     
 }
