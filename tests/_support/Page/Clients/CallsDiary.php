@@ -30,7 +30,7 @@ class CallsDiary
     }
     
     /*
-     * @param array(Calls)
+     * @param array()
      */
     public function testCallsDiarySetOne($callsDataProvider){
         $I = $this->tester;
@@ -47,55 +47,122 @@ class CallsDiary
         
     }
     
-    
+     /*
+     * @param array() $callsFiltersData
+     */
     public function checkCallsDiaryFilters($callsFiltersData){
         $I = $this->tester;
         
         $currentUrl = $I->grabFromCurrentUrl();
         
-        $callsFilterObjects = array();
-        foreach ($callsFiltersData as $callsData) {
-            $callsFilter = call::createCallsFilter($callsData);
-            array_push($callsFilterObjects, $callsFilter);
-        }
+        $callsFiltersObjects = self::getCallsFilters($callsFiltersData);//array();
+
         
-       foreach ($callsFilterObjects as $call) {
-           $tail = self::generateUrlValues($call);
+       foreach ($callsFiltersObjects as $obj) {
+           $tail = self::generateUrlValues($obj);
            $I->amOnPage($currentUrl . $tail); 
-           $I->see('из ' . $call->getNumOfCalls());
-           
+           if($obj->getNumOfCalls() > 0){
+               $I->see('из ' . $obj->getNumOfCalls());
+               if($obj->getCallsData()){
+                self::verifyThatCallsIsExists($obj->getCallsData());
+               }
+           }else {
+               //если нет звонков то и таблицы со звонками и инфо по звонкам быть не должно.
+               $I->dontSeeElement("//td[@data-path]");
+               $I->dontSeeElement("//td[@text='Куда:']");
+               $I->dontSeeElement("//td[@text='utm_term:']");
+               $I->dontSeeElement("//td[@text='Город:']");
+               $I->dontSeeElement("//td[@text='utm_campaign:']");
+           }
        }
         
         return $this;
     }
     
- 
-    public function generateUrlValues($call){
+    
+    /*
+     * В методе осуществляется проверка
+     * на существование в выдаче ид номеров, номеров телефонов и т.д.
+     *@param array() $callsData
+     */
+    public function verifyThatCallsIsExists($callsData){
+        $I = $this->tester; 
+        $callsObjects = self::getCalls($callsData);
+        
+        foreach($callsObjects as $call){
+            $I->seeInSource($call->getId());
+            $I->see($call->getWhereCalled(), '//span');
+            $I->seeInSource($call->getPhoneCaller(), './span');
+            $I->seeInSource($call->getCallDuration());
+            $I->seeInSource($call->getDateCall());
+            if(!empty($call->getCallWaiting()))
+                $I->seeInSource($call->getCallWaiting());
+        }
+        
+        return $this;
+    }
+   
+    /*
+     * Метод получает массив объектов звонком
+     * @param array()
+     * 
+    */
+    
+    public function getCalls($callsData){
+        $callsObjects = array();
+        
+        foreach ($callsData as $callData) {
+            $call = call::createCall($callData);
+            array_push($callsObjects, $call);
+        }
+        return $callsObjects;
+    
+    }
+    
+    /*
+    * @param array()
+    */
+    public function getCallsFilters($callsFiltersData){
+        $callsFiltersObjects = array();
+        foreach ($callsFiltersData as $callsData) {
+            $callsFilter = call::createCallsFilter($callsData);
+            array_push($callsFiltersObjects, $callsFilter);
+        }
+        
+        return $callsFiltersObjects;
+    }
+    
+     /*
+     * Метод возвращает часть урла с get параметрами
+     * @param array()
+     * 
+     */
+    public function generateUrlValues($callFilter){
         $tail="";
-        if(!empty($call->getSource())){
-            if(strpos($call->getSource(), ',') != false){
-                $sources = explode(",", $call->getSource());
+        if(!empty($callFilter->getSource())){
+            if(strpos($callFilter->getSource(), ',') != false){
+                $sources = explode(",", $callFilter->getSource());
                 $numOfSources = count($sources);
                 for($i=0;$i<$numOfSources;$i++){
                     $tail .= self::SOURCE . $sources[$i];
                 }
             }else{
-                 $tail .= self::SOURCE . $call->getSource();
+                 $tail .= self::SOURCE . $callFilter->getSource();
                 }
         }
-        if(!empty($call->getMedium())){
-            if(strpos($call->getMedium(), ',') != false){
-                 $mediumArr = explode(",", $call->getMedium());
+        if(!empty($callFilter->getMedium())){
+            if(strpos($callFilter->getMedium(), ',') != false){
+                 $mediumArr = explode(",", $callFilter->getMedium());
                  $lengthMediumArr = count($mediumArr);
                  for($i=0;$i<$lengthMediumArr;$i++){
                    $tail .= self::MEDIUM . $mediumArr[$i];
                  }
             }else {
-                $tail .= self::MEDIUM . $call->getMedium();
+                $tail .= self::MEDIUM . $callFilter->getMedium();
             }
         }
         
-        $tail .= self::DURATION_LOWER . $call->getDurationLower() . self::DURATION_UPPER . $call->getDurationUpper() ;
+        $tail .= self::DURATION_LOWER . $callFilter->getDurationLower() . self::DURATION_UPPER . $callFilter->getDurationUpper() ;
         
         return $tail;
     }
