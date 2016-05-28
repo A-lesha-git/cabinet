@@ -29,6 +29,8 @@ class CallsDiary
         $this->tester = $I;
     }
     
+
+    
     /*
      * @param array()
      */
@@ -48,6 +50,64 @@ class CallsDiary
     }
     
      /*
+     * @param array()
+     */
+    public function testCallsDiaryFirstFormFilter($callsDataProvider){
+        $I = $this->tester;
+        $navigate = new \Page\Navigation\Navigation($I);
+        foreach ($callsDataProvider as $key){
+           $navigate->goToPage($key['accountId'], $key['siteId'], $key['beginDate'], $key['endDate'], $key['section']);
+           self::fillFormDatesAndSegmentsFilter($key['filterData']);
+           
+        }
+        return $this;
+    }
+    
+    public function fillFormDatesAndSegmentsFilter($filterData){
+         $I = $this->tester;
+         
+        foreach ($filterData as $key){
+            $I->fillField('begin_date', $key['startDate']);
+            $I->fillField('end_date', $key['endDate']);
+            switch ($key['segment']) {
+                case 'Платный трафик':
+                    $I->selectOption("form select[name=selectSiteSegment]", '51');    
+                    break;
+                case 'Все сегменты':
+                    $I->selectOption("form select[name=selectSiteSegment]", 'any');    
+                    break;
+                case 'Органический поиск':
+                    $I->selectOption("form select[name=selectSiteSegment]", '52');    
+                    break;
+                case 'Рефералы':
+                    $I->selectOption("form select[name=selectSiteSegment]", '53');    
+                    break;
+                case 'Прямые заходы':
+                    $I->selectOption("form select[name=selectSiteSegment]", '54');    
+                    break;
+                //only account_id=3363
+                case 'NEVSKY':
+                    $I->selectOption("form select[name=selectSiteSegment]", '3059');    
+                    break;
+                //account_id=6627
+                case 'Весь платный трафик':
+                    $I->selectOption("form select[name=selectSiteSegment]", '8553');    
+                    break;
+                default:
+                    break;
+            }
+            
+            $I->click('Показать', "//input[@class='btn']");
+            if($key['numOfCalls']>0)
+                self::verifyNumOfCalls($key['numOfCalls']);
+            else
+                self::checkThatNoCallsExist();
+        }
+        
+        return $this;
+    } 
+    
+     /*
      * @param array() $callsFiltersData
      */
     public function checkCallsDiaryFilters($callsFiltersData){
@@ -57,7 +117,6 @@ class CallsDiary
         
         $callsFiltersObjects = self::getCallsFilters($callsFiltersData);//array();
 
-        
        foreach ($callsFiltersObjects as $obj) {
            $tail = self::generateUrlValues($obj);
            $I->amOnPage($currentUrl . $tail); 
@@ -67,18 +126,40 @@ class CallsDiary
                 self::verifyThatCallsIsExists($obj->getCallsData());
                }
            }else {
-               //если нет звонков то и таблицы со звонками и инфо по звонкам быть не должно.
-               $I->dontSeeElement("//td[@data-path]");
-               $I->dontSeeElement("//td[@text='Куда:']");
-               $I->dontSeeElement("//td[@text='utm_term:']");
-               $I->dontSeeElement("//td[@text='Город:']");
-               $I->dontSeeElement("//td[@text='utm_campaign:']");
+              
+               self::checkThatNoCallsExist();
+               
            }
        }
         
         return $this;
     }
     
+    public function checkThatNoCallsExist(){
+         //если нет звонков то и таблицы со звонками и инфо по звонкам быть не должно.
+        $I = $this->tester; 
+        
+        $I->dontSeeElement("//td[@data-path]");
+        $I->dontSeeElement("//td[@text='Куда:']");
+        $I->dontSeeElement("//td[@text='utm_term:']");
+        $I->dontSeeElement("//td[@text='Город:']");
+        $I->dontSeeElement("//td[@text='utm_campaign:']");
+        
+        return $this;
+    }
+    
+    public function verifyNumOfCalls($numOfCalls){
+        $I = $this->tester;
+        if($numOfCalls != 9999)
+            $I->see('из ' . $numOfCalls, '//a');
+        //если не известно сколько звонков, но они есть
+        else {
+            $I->see('из', '//a');
+            $I->seeElement("//td[@data-path]");
+        }
+        
+        return $this;
+    }
     
     /*
      * В методе осуществляется проверка
