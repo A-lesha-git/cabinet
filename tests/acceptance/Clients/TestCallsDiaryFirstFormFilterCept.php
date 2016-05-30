@@ -71,6 +71,7 @@ $callsDataProvider = [
         ]
         ],
     // negative tests
+    
      [        
         'accountId'=>5014,
         'siteId'=>8215,
@@ -103,8 +104,8 @@ $callsDataProvider = [
             [
                 'startDate'=>'-1',
                 'endDate'=>'12232345345',
-                'segment'=>'Все сегменты',
-                'numOfCalls'=>9999
+                'segment'=>'Рефералы',
+                'numOfCalls'=>0
             ],
         ]
         ],

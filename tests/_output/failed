@@ -1,4 +1,0 @@
-tests/acceptance/Auth/LoginAsAdminCept.php
-tests/acceptance/Clients/CallsDiaryTestsSetOneCept.php
-tests/acceptance/Clients/CallsDiaryTestsSetTwoCept.php
-tests/acceptance/Clients/TestCallsDiaryFirstFormFilterCept.php

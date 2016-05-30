@@ -88,7 +88,7 @@ class CallsDiary
             }
             
             $I->click('Показать', "//input[@class='btn']");
-            if($key['numOfCalls']>0)
+            if($key['numOfCalls'] > 0)
                 self::verifyNumOfCalls($key['numOfCalls']);
             else
                 self::checkThatNoCallsExist();
