@@ -120,6 +120,6 @@ $login->login($I->getProperty('admin'),$I->getProperty('psw'));
 
 $calls = new \Page\Clients\CallsDiary($I);
 
-$calls->testCallsDiaryFirstFormFilter($callsDataProvider);
+$calls->testCallsDiaryFormDateAndSegmentFilter($callsDataProvider);
 
 $login->logout();

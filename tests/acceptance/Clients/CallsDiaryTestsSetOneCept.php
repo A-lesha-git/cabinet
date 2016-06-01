@@ -3,6 +3,10 @@
 //@group Bgroup1
 //@group Cgroup1
 //@group callSetOne
+// значения которые может принимать ключ num_of_calls
+//num_of_calls > 0 - кол-во звонков за период времени
+//num_of_calls == 0 - ноль означает что звонков вообще не должно быть
+
 
 $callsDataProvider = [
     //calltouch.ru
@@ -129,160 +133,99 @@ $callsDataProvider = [
              
                 
             ], 
-
-//            [
-//            'source'=>'(direct)', 
-//            'medium'=>'organic', 
-//            'duration_low'=>'0', 
-//            'duration_up'=>'50' 
-//            ], 
-//            [
-//            'source'=>'google,yandex,(direct)', 
-//            'medium'=>'organic', 
-//            'duration_low'=>'1500', 
-//            'duration_up'=>'150' 
-//            ], 
-//            [
-//            'source'=>'google,yandex', 
-//            'medium'=>'organic', 
-//            'duration_low'=>'50', 
-//            'duration_up'=>'150' 
-//            ], 
-
-//            [
-//            'source'=>'yandex', 
-//            'medium'=>'referral', 
-//            'duration_low'=>'0', 
-//            'duration_up'=>'1500' 
-//            ], 
-
-//            [
-//            'source'=>'google,yandex,(direct)', 
-//            'medium'=>'referral', 
-//            'duration_low'=>'150', 
-//            'duration_up'=>'50' 
-//            ], 
-//            [
-//            'source'=>'google,yandex', 
-//            'medium'=>'referral', 
-//            'duration_low'=>'150', 
-//            'duration_up'=>'0' 
-//            ], 
-//            [
-//            'source'=>'google', 
-//            'medium'=>'cpc,organic,refferal', 
-//            'duration_low'=>'0', 
-//            'duration_up'=>'150' 
-//            ], 
-//            [
-//            'source'=>'yandex', 
-//            'medium'=>'cpc,organic,refferal', 
-//            'duration_low'=>'1500', 
-//            'duration_up'=>'50' 
-//            ], 
-//            [
-//            'source'=>'(direct)', 
-//            'medium'=>'cpc,organic,refferal', 
-//            'duration_low'=>'150', 
-//            'duration_up'=>'0' 
-//            ], 
-
-//            [
-//            'source'=>'google,yandex', 
-//            'medium'=>'cpc,organic,refferal', 
-//            'duration_low'=>'1500', 
-//            'duration_up'=>'3000' 
-//            ], 
-//            [
-//            'source'=>'google', 
-//            'medium'=>'cpc,organic', 
-//            'duration_low'=>'3000', 
-//            'duration_up'=>'50' 
-//            ], 
-//            [
-//            'source'=>'yandex', 
-//            'medium'=>'cpc,organic', 
-//            'duration_low'=>'150', 
-//            'duration_up'=>'3000' 
-//            ], 
-//            [
-//            'source'=>'(direct)', 
-//            'medium'=>'cpc,organic', 
-//            'duration_low'=>'0', 
-//            'duration_up'=>'150' 
-//            ], 
- 
-//            [
-//            'source'=>'google', 
-//            'medium'=>'cpc,refferal', 
-//            'duration_low'=>'0', 
-//            'duration_up'=>'3000' 
-//            ], 
-//            [
-//            'source'=>'yandex', 
-//            'medium'=>'cpc,refferal', 
-//            'duration_low'=>'3000', 
-//            'duration_up'=>'150' 
-//            ], 
-//            [
-//            'source'=>'(direct)', 
-//            'medium'=>'cpc,refferal', 
-//            'duration_low'=>'3000', 
-//            'duration_up'=>'0' 
-//            ], 
-//            [
-//            'source'=>'google,yandex,(direct)', 
-//            'medium'=>'cpc,refferal', 
-//            'duration_low'=>'50', 
-//            'duration_up'=>'50' 
-//            ], 
-//            [
-//            'source'=>'google,yandex', 
-//            'medium'=>'cpc,refferal', 
-//            'duration_low'=>'150', 
-//            'duration_up'=>'1500' 
-//            ], 
-//            [
-//            'source'=>'google,yandex,(direct)', 
-//            'medium'=>'organic', 
-//            'duration_low'=>'3000', 
-//            'duration_up'=>'3000' 
-//            ], 
-//            [
-//            'source'=>'~google', 
-//            'medium'=>'referral', 
-//            'duration_low'=>'3000', 
-//            'duration_up'=>'150' 
-//            ], 
-//            [
-//            'source'=>'~google', 
-//            'medium'=>'cpc,organic', 
-//            'duration_low'=>'50', 
-//            'duration_up'=>'0' 
-//            ], 
-//            [
-//            'source'=>'~google', 
-//            'medium'=>'cpc,organic,refferal', 
-//            'duration_low'=>'3000', 
-//            'duration_up'=>'1500' 
-//            ], 
-//            [
-//            'source'=>'~yandex', 
-//            'medium'=>'cpc,organic', 
-//            'duration_low'=>'1500', 
-//            'duration_up'=>'1500' 
-//            ], 
-//            [
-//            'source'=>'~google', 
-//            'medium'=>'cpc,refferal', 
-//            'duration_low'=>'1500', 
-//            'duration_up'=>'3000' 
-//            ], 
-
             
         ]
-   ]
-           
+    ],
+      //rg_gorodkahovskaya   
+    [
+        
+        'accountId'=>6416,
+        'siteId'=>5732,
+        'beginDate'=>'2016-05-25',
+        'endDate'=>'2016-05-31',
+        'section'=>'Журнал Звонков',
+        'callsData'=>
+        [
+            //negative
+            // если в фильтрах указано direct + referral, то кол-во звонков равно 0
+            [
+            'source'=>'(direct)', 
+            'medium'=>'referral', 
+            'duration_low'=>'0', 
+            'duration_up'=>'1500',
+            'num_of_calls'=>0,
+            ],
+            // если в фильтрах указано direct + cpc, то кол-во звонков равно 0
+            [
+            'source'=>'(direct)', 
+            'medium'=>'cpc', 
+            'duration_low'=>'0', 
+            'duration_up'=>'1500',
+            'num_of_calls'=>0,
+            ], 
+            [
+            'source'=>'google', 
+            'medium'=>'(none)', 
+            'duration_low'=>'0', 
+            'duration_up'=>'1500',
+            'num_of_calls'=>0,
+            ],
+            [
+            'source'=>'', 
+            'medium'=>'Не определено', 
+            'duration_low'=>'150', 
+            'duration_up'=>'1500',
+            'num_of_calls'=>0,
+            ],
+            
+            //positive
+            
+            [
+            'source'=>'Choister-звонки', 
+            'medium'=>'', 
+            'duration_low'=>'0', 
+            'duration_up'=>'1500',
+            'num_of_calls'=>1,
+            ],
+            [
+            'source'=>'', 
+            'medium'=>'', 
+            'duration_low'=>'150', 
+            'duration_up'=>'1500',
+            'num_of_calls'=>104,
+            ],
+
+            
+        ],
+        
+        //laserpribor.ru node 2
+        [
+        'accountId'=>8055,
+        'siteId'=>7884,
+        'beginDate'=>'2016-05-18',
+        'endDate'=>'2016-06-21',
+        'section'=>'Журнал Звонков',
+             'callsData'=>
+        [
+            [
+            'source'=>'tm.fru-it.ru', 
+            'medium'=>'referral', 
+            'duration_low'=>'0', 
+            'duration_up'=>'150',
+            'num_of_calls'=>1,
+            ],
+            [
+            'source'=>'mastercity.ru', 
+            'medium'=>'referral', 
+            'duration_low'=>'0', 
+            'duration_up'=>'3000',
+            'num_of_calls'=>6,
+            ],
+        ]
+    ]
+        ]
+            
+    
 ];
 
 $I = new AcceptanceTester($scenario);
