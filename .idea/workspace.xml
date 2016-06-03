@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="156e872d-4c42-41ec-a5ff-60768efd75b8" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/_support/_generated/AcceptanceTesterActions.php" afterPath="$PROJECT_DIR$/tests/_support/_generated/AcceptanceTesterActions.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/_output/Auth.LoginAsAdminCept.fail.html" afterPath="$PROJECT_DIR$/tests/_output/Auth.LoginAsAdminCept.fail.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/_support/Objects/Call.php" afterPath="$PROJECT_DIR$/tests/_support/Objects/Call.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/_support/Page/Clients/CallsDiary.php" afterPath="$PROJECT_DIR$/tests/_support/Page/Clients/CallsDiary.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/acceptance/Clients/CallsDiaryTestsSetOneCept.php" afterPath="$PROJECT_DIR$/tests/acceptance/Clients/CallsDiaryTestsSetOneCept.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/acceptance/Clients/CallsDiaryTestsSetTwoCept.php" afterPath="$PROJECT_DIR$/tests/acceptance/Clients/CallsDiaryTestsSetTwoCept.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/_output/Clients.CallsDiaryTestsSetTwoCept.fail.html" afterPath="$PROJECT_DIR$/tests/_output/Clients.CallsDiaryTestsSetTwoCept.fail.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/_support/Page/Navigation/Navigation.php" afterPath="$PROJECT_DIR$/tests/_support/Page/Navigation/Navigation.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/acceptance.suite.yml" afterPath="$PROJECT_DIR$/tests/acceptance.suite.yml" />
     </list>
     <ignored path="cabinet.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -20,6 +12,7 @@
     <file path="/CallsDiary.php" changelist="156e872d-4c42-41ec-a5ff-60768efd75b8" time="1464973551573" ignored="false" />
     <file path="/acceptance.suite.yml" changelist="156e872d-4c42-41ec-a5ff-60768efd75b8" time="1464888349849" ignored="false" />
     <file path="/TestFormFillManualyCept.php" changelist="156e872d-4c42-41ec-a5ff-60768efd75b8" time="1464950652830" ignored="false" />
+    <file path="$PROJECT_DIR$/tests/_output/Clients.TestFormFillManualyCept.fail.html" changelist="156e872d-4c42-41ec-a5ff-60768efd75b8" time="1464979116937" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +44,7 @@
       <file leaf-file-name="CallsDiary.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tests/_support/Page/Clients/CallsDiary.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="94" column="57" selection-start="3462" selection-end="3462" vertical-scroll-proportion="0.8603352">
+            <state line="65" column="16" selection-start="2120" selection-end="2120" vertical-scroll-proportion="0.8882682">
               <folding />
             </state>
           </provider>
@@ -596,7 +589,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/_support/Page/Clients/CallsDiary.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="94" column="57" selection-start="3462" selection-end="3462" vertical-scroll-proportion="0.8603352">
+        <state line="65" column="16" selection-start="2120" selection-end="2120" vertical-scroll-proportion="0.8882682">
           <folding />
         </state>
       </provider>

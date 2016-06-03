@@ -60,29 +60,27 @@ class CallsDiary
 
         return $this;
     }
-
+    /*
+     * метод "вручную" выбирает\вводит значения в форму поиска звонков.
+     * @param array()
+     * @return $I
+     */
     public function checkCallsDiaryFiltersManualy($callsFiltersData){
         $I = $this->tester;
-       // if(!empty($callsFiltersData['source']))
+
         foreach($callsFiltersData as $key){
             if(!empty($key['source']))
                 $I->selectOption(self::$sourceSelect, $key['source']);
-
             if(!empty($key['medium']))
                 $I->selectOption(self::$mediumSelect, $key['medium']);
-
             if(!empty($key['where']))
                 $I->selectOption(self::$refWhereSelect, $key['where']);
-
             if(!empty($key['keyword']))
                 $I->fillField(self::$keywordSearchField, $key['keyword']);
-
             if(!empty($key['ani']))
                 $I->fillField(self::$keywordSearchField, $key['ani']);
-
             if(!empty($key['phone_number']))
                 $I->fillField(self::$keywordSearchField, $key['phone_number']);
-
             if(!empty($key['utm_source']))
                 $I->selectOption(self::$utmSourceSelect, $key['utm_source']);
             if(!empty($key['utm_term']))
@@ -93,12 +91,12 @@ class CallsDiary
                 $I->selectOption(self::$utmContentSelect, $key['utm_content']);
             if(!empty($key['utm_campaign']))
                 $I->selectOption(self::$utmCampaignSelect, $key['utm_campaign']);
-
+            //press btn "Показать"
             $I->click(self::$searchBtn);
             self::verifyNumOfCalls($key['num_of_calls']);
         }
 
-        //press btn "Показать"
+
 
 
 
