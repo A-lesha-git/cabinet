@@ -9,6 +9,7 @@ modules:
     enabled:
         - PhpBrowser:
             url: http://localhost/myapp
+            CURLOPT_TIMEOUT: 240
         - \Helper\Acceptance
 
 env:
@@ -17,3 +18,9 @@ env:
             config:
                 PhpBrowser:
                   url: https://lk.calltouch.ru
+
+    p2:
+            modules:
+                config:
+                    PhpBrowser:
+                      url: https://beta.calltouch.ru

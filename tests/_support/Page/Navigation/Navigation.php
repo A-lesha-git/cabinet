@@ -107,8 +107,7 @@ class Navigation
                 $I->seeElement(self::$chartDivOne);
                 $I->seeElement(self::$chartDivTwo);
                 $I->seeElement(self::$chartDivFour);
-//                $I->seeElement(self::$chartDivThree); сбоит, возможно зависит от периода периода
-
+//                $I->seeElement(self::$chartDivThree); сбоит, возможно зависит от периода
                 break;
             case 'Платный трафик':
                 $I->amOnPage(self::getPageUrl($idAccaunt, $idSite, $startDate, $endDate, self::$MONEY_TRAFIC));

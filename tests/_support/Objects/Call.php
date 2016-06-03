@@ -36,20 +36,45 @@ class Call {
 
     public static function createCallsFilter(array $callsFilterData){
         $callsDiaryFilter = new static;
-        $callsDiaryFilter->setSource($callsFilterData['source']);
-        $callsDiaryFilter->setMedium($callsFilterData['medium']);
+
+        if(isset($callsFilterData['source']))
+            $callsDiaryFilter->setSource($callsFilterData['source']);
+
+        if(isset($callsFilterData['medium']))
+            $callsDiaryFilter->setMedium($callsFilterData['medium']);
+
+        if(isset($callsFilterData['duration_low']))
         $callsDiaryFilter->setDurationLower($callsFilterData['duration_low']);
-        $callsDiaryFilter->setDurationUpper($callsFilterData['duration_up']);
+
+        if(isset($callsFilterData['duration_up']))
+            $callsDiaryFilter->setDurationUpper($callsFilterData['duration_up']);
         
         if(isset($callsFilterData['num_of_calls']))
             $callsDiaryFilter->setNumOfCalls($callsFilterData['num_of_calls']);
         
         if(isset($callsFilterData['calls']))
             $callsDiaryFilter->setCallsData($callsFilterData['calls']);
-        
+
+        if(isset($callsFilterData['utm_source']))
+            $callsDiaryFilter->setUtmSource($callsFilterData['utm_source']);
+
+        if(isset($callsFilterData['utm_term']))
+            $callsDiaryFilter->setUtmTerm($callsFilterData['utm_term']);
+
+        if(isset($callsFilterData['utm_medium']))
+            $callsDiaryFilter->setUtmMedium($callsFilterData['utm_medium']);
+
+        if(isset($callsFilterData['utm_content']))
+            $callsDiaryFilter->setUtmContent($callsFilterData['utm_content']);
+
+        if(isset($callsFilterData['utm_campaign']))
+            $callsDiaryFilter->setUtmCampaign($callsFilterData['utm_campaign']);
+
+
+
         return $callsDiaryFilter;
     }
-    
+
     public static function createCall(array $callsFilterData){
         $call = new static;
         $call->setId($callsFilterData['call_id']);

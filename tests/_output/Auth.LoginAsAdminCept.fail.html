@@ -1,9 +1,618 @@
-<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
-<html><head>
-<title>404 Not Found</title>
-</head><body>
-<h1>Not Found</h1>
-<p>The requested URL /myapp/login was not found on this server.</p>
-<hr>
-<address>Apache/2.4.18 (Ubuntu) Server at localhost Port 80</address>
-</body></html>
+<!doctype html>
+<html lang="ru">
+<head>
+
+<script><!--
+function supports_html5_storage() {
+  try {
+    return 'localStorage' in window && window['localStorage'] !== null;
+} catch (e) {
+    return false;
+  }
+}
+window.onunload = function() {
+    if ( !window.name ) {
+        window.name = 'ct_'+ parseInt(Math.random()*1000000000) +'_';
+    }
+    if ( supports_html5_storage() ) {
+        localStorage.removeItem(window.name +"by_last_page");
+        localStorage.setItem(window.name +"by_last_page", (new Date()).getTime());
+    }
+};
+window.onload = function() {
+    t['all_1_page'] = (t['2_end'] - t['1_begin']) / 1000;
+    t['all_2_server_answer_+_page'] = t['all_1_page'] + t['all_0_server_answer'];
+    t['4_onload'] = (new Date()).getTime();
+    t['all_3_page_+_statica'] = (t['4_onload'] - t['1_begin']) / 1000;
+    t['all_4_request_+_full_load'] = (t['4_onload'] - t['0_by_last_page']) / 1000;
+};
+var t = {};
+t['1_begin'] = (new Date()).getTime();
+t['0_by_last_page'] = supports_html5_storage() ? parseInt( localStorage.getItem(window.name +"by_last_page") ) : 0;
+t['all_0_server_answer'] = (t['1_begin'] - t['0_by_last_page']) / 1000;
+--></script>
+
+    <meta charset="UTF-8">
+    <title> Личный кабинет Calltouch </title>
+        <link rel="stylesheet" href="/resources/modx/css/material/material.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+<link rel="stylesheet" href="/resources/modx/css/main.css?2"/>
+<link rel="stylesheet" href="/resources/datepicker/css/datepicker3.css"/>
+<link rel="stylesheet" charset="utf-8" href="/resources/onbording/css/style.css?8" />
+
+<script src="/resources/onbording/js/jquery-2.1.4.min.js"></script>
+<script>
+    window.jQuery2 = jQuery.noConflict(true);
+</script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+
+<script src="//code.highcharts.com/highcharts.js"></script>
+
+<script type="text/javascript">
+    WebFontConfig = {
+        google: { families: [ 'Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic:latin,cyrillic-ext' ] }
+    };
+    (function() {
+        var wf = document.createElement('script');
+        wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+                '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+        wf.type = 'text/javascript';
+        wf.async = 'true';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(wf, s);
+    })();
+</script>
+<script src="/resources/datepicker/js/bootstrap-datepicker.js"></script>
+<script src="/resources/datepicker/js/locales/bootstrap-datepicker.ru.js"></script>
+
+<script src="/resources/modx/css/material/material.min.js"></script>
+
+<script src="/resources/onbording/js/script.js?3"></script>
+<script src="/resources/js/lib.js"></script>
+<script src="/resources/js/notify.min.js"></script>
+
+
+
+
+<script type="text/javascript">
+if ( !window.V ) {
+    var V = {};
+    window.V = V;
+}
+</script>
+<script type="text/javascript">
+$(function(){
+    if ( window.Help ) new Help();
+});
+</script>
+
+
+
+
+<style>
+.simple-popup-iframe {
+    width:         100%;
+    overflow-x:    hidden;
+    overflow-y:    auto;
+    border:        0 none;
+    border-radius: 2px;
+}
+.mdl-selectfield.is-invalid .mdl-textfield__error {
+    visibility: visible;
+}
+</style>
+
+<script>
+function simplePopup( content, ok_func ) {
+    // render
+    $('<div id="cover_layer_white" style="display: none;"></div>').height( $( document ).height() ).appendTo( $('body') );
+    $('\
+        <div id="simple-popup" style="display: none;">\
+            <div class="simple-popup-body">\
+            </div>\
+            <div class="simple-popup-footer">\
+                '+ (ok_func ? '<button id="simple-popup-cancel" class="mdl-button mdl-js-button mdl-button--accent">Отмена</button>' : '') +'\
+                <button id="simple-popup-ok" class="mdl-button mdl-js-button mdl-button--accent">ОК</button>\
+            </div>\
+        </div>\
+    ').find('.simple-popup-body').append( content ).end()
+      .appendTo( $('body') ).css({
+        'top': (
+            $( document ).scrollTop() + $( window ).height() / 2 - $('#simple-popup').height() / 2
+        ) +'px',
+        'left': (
+            $( document ).width() / 2 - $('#simple-popup').width() / 2
+        ) +'px'
+    });
+
+    // handlers
+    $('#simple-popup-cancel').click(function() {
+        $('#cover_layer_white').remove();
+        $('#simple-popup'     ).remove();
+    });
+    $('#simple-popup-ok').click(function() {
+        if ( ok_func ) {
+            if ( !( ok_func.call() ) ) {
+                // показать сообщение об ошибке
+                return false;
+            }
+        }
+        $('#cover_layer_white').remove();
+        $('#simple-popup'     ).remove();
+    });
+
+    // show
+    $('#cover_layer_white').show();
+    $('#simple-popup'     ).show();
+}
+
+function popupIFrameDocument( url ) {
+    var height = $( window ).height() * 0.9;
+
+    // render
+    $('<div id="cover_layer_white" style="display: none;"></div>').height( $( document ).height() )
+                                                                  .appendTo( $('body') );
+    $('\
+        <div id="simple-popup" style="display: none;">\
+            <div class="simple-popup-body mt15 mb10" style="height: '+ ( height - 60 ) +'px;">\
+                <iframe src="'+ url +'" class="simple-popup-iframe" style="height: '+ ( height - 80 ) +'px;"></iframe>\
+            </div>\
+            <div class="simple-popup-footer mt8" style="padding-bottom: 10px;">\
+                <button id="simple-popup-cancel" class="mdl-button mdl-js-button mdl-button--accent">Отмена</button>\
+                <button id="simple-popup-ok"     class="mdl-button mdl-js-button mdl-button--accent">ОК</button>\
+            </div>\
+        </div>\
+    ').appendTo( $('body') )
+      .width(  $( window ).width()  * 0.6 )
+      .height( height )
+      .css({'top': (
+        $( document ).scrollTop() + $( window ).height() / 2 - $('#simple-popup').height() / 2
+    ) +'px', 'left': (
+        $( document ).width() / 2 - $('#simple-popup').width() / 2
+    ) });
+
+    // handlers
+    $('#simple-popup-cancel').click(function() {
+        $('#cover_layer_white').remove();
+        $('#simple-popup'     ).remove();
+    });
+    $('#simple-popup-ok').click(function() {
+        $('#cover_layer_white').remove();
+        $('#simple-popup'     ).remove();
+    });
+
+    // show
+    $('#cover_layer_white').show();
+    $('#simple-popup'     ).show();
+}
+
+</script>
+    </head>
+<body class="grey">
+
+<!-- Google Tag Manager -->
+<noscript>&lt;iframe src="//www.googletagmanager.com/ns.html?id=GTM-WSVDK9" height="0" width="0" style="display:none;visibility:hidden"&gt;&lt;/iframe&gt;</noscript>
+<script>
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.defer = 'defer';j.async=true;j.src=
+        '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-WSVDK9');
+</script>
+<!-- End Google Tag Manager -->
+
+<div class="OB page SiteGrid-page">
+    
+<style>
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    .AccountBar {
+        padding-top: 13px;
+    }
+    .ActionsBar {
+        padding-top: 11px;
+    }
+}
+</style>
+<!--[if IE]>
+<style>
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    .AccountBar {
+        padding-top: 13px;
+    }
+    .ActionsBar {
+        padding-top: 11px;
+    }
+}
+</style>
+<![endif]-->
+
+<header class="OB Header with-transition">
+    <div class="AccountBar">
+        <div class="with-transition flex">
+            <a href="/dashboard">
+                                    <svg class="Calltouch-logo" width="163px" height="24px" viewBox="0 0 163 24">
+    <g>
+        <g transform="translate(0.076334, 0.100674)">
+            <path d="M17.161118,0.0133451701 L14.0885985,6.09573354 L19.2981019,6.14283414 L19.2981019,12.0330259 C19.1926267,14.8067279 16.9450641,17.258445 13.6301873,17.5137041 L13.6301873,23.5751589 C20.1159922,23.3711871 25.5936327,18.0867614 25.5936327,11.7124801 L25.5936327,6.09573354 L28.4274591,6.09573354 L31.5008947,0.0133451701 L17.161118,0.0133451701" fill="#37474F"></path>
+            <path d="M6.22101704,11.7805143 C6.33028719,8.34871226 8.81366394,6.23559616 12.1288024,6.05648304 L12.1288024,0.0133451701 C5.0661559,0.194944152 0.0750619793,5.39184124 0.0750619793,11.7805143 L0.0753237042,11.7857477 L0.0750619793,11.7896728 C0.0750619793,18.1782151 5.0661559,23.373673 12.1288024,23.5569728 L12.1288024,17.5137041 C8.81366394,17.3343293 6.33028719,15.2214749 6.22101704,11.7896728 L6.22101704,11.7805143" fill="#00BCD4" data-reactid=".0.0.0.0.0.0.0.1"></path>
+        </g>
+        <g transform="translate(36.307452, 3.934588)">
+            <path d="M6.94167993,15.744108 C2.42998379,15.744108 0.0237215364,12.4050668 0.0237215364,7.91728461 C0.0237215364,3.04671026 2.8872429,0.0973879254 6.96137051,0.0973879254 C10.6894543,0.0973879254 12.1647896,1.7014693 13.2047441,4.55928608 L9.39169903,6.05800847 C8.84656157,4.65042707 8.32658431,3.7572454 6.94167993,3.7572454 C5.18411301,3.7572454 4.4256609,5.51517276 4.4256609,7.91728461 C4.4256609,10.2399215 5.16332851,12.0802403 6.9847075,12.0802403 C8.3057998,12.0802403 8.8702632,11.3693406 9.69471523,9.93696888 L13.2477717,11.8181189 C12.2307895,13.8159293 10.5381286,15.744108 6.94167993,15.744108" fill="#37474F"></path>
+            <path d="M22.2346999,8.5078782 C21.6921149,6.55381544 21.4554633,5.73354656 21.2592867,4.71276751 C21.0645687,5.73354656 20.8282817,6.57568928 20.282415,8.5078782 L20.0016419,9.49912758 L22.5162023,9.49912758 L22.2346999,8.5078782 L22.2346999,8.5078782 Z M24.3587304,15.507506 L23.5346431,12.8388979 L18.9839304,12.8388979 L18.1572905,15.507506 L13.6506993,15.507506 L19.1578639,0.334354492 L23.4048311,0.334354492 L28.9130895,15.507506 L24.3587304,15.507506 L24.3587304,15.507506 Z" fill="#37474F"></path>
+            <path d="M30.3264359,15.507506 L30.3264359,0.334354492 L34.5755909,0.334354492 L34.5755909,11.8436383 L41.2940909,11.8436383 L41.2940909,15.507506 L30.3264359,15.507506" fill="#37474F"></path>
+            <path d="M43.1956908,15.507506 L43.1956908,0.334354492 L47.4430227,0.334354492 L47.4430227,11.8436383 L54.1648045,11.8436383 L54.1648045,15.507506 L43.1956908,15.507506" fill="#37474F"></path>
+            <path d="M61.6424859,3.99822217 L61.6424859,15.507506 L57.4370878,15.507506 L57.4370878,3.99822217 L53.1882974,3.99822217 L53.1882974,0.334354492 L65.8938288,0.334354492 L65.8938288,3.99822217 L61.6424859,3.99822217" fill="#00BCD4"></path>
+            <path d="M73.8043385,3.7572454 C72.1145947,3.7572454 71.159966,5.16847244 71.159966,7.90270205 C71.159966,10.6296404 72.1605394,12.0802403 73.8506478,12.0802403 C75.5385684,12.0802403 76.4953849,10.6770337 76.4953849,7.94644972 C76.4953849,5.21222011 75.493353,3.7572454 73.8043385,3.7572454 L73.8043385,3.7572454 Z M73.8043385,15.744108 C69.6842662,15.744108 66.8057945,12.9956604 66.8057945,7.94644972 C66.8057945,2.89322884 69.7298462,0.0973879254 73.8506478,0.0973879254 C77.9659798,0.0973879254 80.8495564,2.84984573 80.8495564,7.90270205 C80.8495564,12.9519127 77.9240461,15.744108 73.8043385,15.744108 L73.8043385,15.744108 Z" fill="#00BCD4"></path>
+            <path d="M89.2191484,15.744108 C85.4017276,15.744108 82.6067586,13.8378031 82.6067586,9.02519445 L82.6067586,0.334354492 L86.8985766,0.334354492 L86.8985766,9.02519445 C86.8985766,10.8884808 87.6384321,12.0405029 89.2800433,12.0405029 C90.9325938,12.0405029 91.6235874,10.8884808 91.6235874,9.02519445 L91.6235874,0.334354492 L95.9183225,0.334354492 L95.9183225,9.02519445 C95.9183225,13.8378031 93.0329227,15.744108 89.2191484,15.744108" fill="#00BCD4"></path>
+            <path d="M104.59166,15.744108 C100.080328,15.744108 97.6726076,12.4050668 97.6726076,7.91728461 C97.6726076,3.04671026 100.536858,0.0973879254 104.610986,0.0973879254 C108.340893,0.0973879254 109.815134,1.7014693 110.858006,4.55928608 L107.038397,6.05800847 C106.500188,4.65042707 105.976929,3.7572454 104.59166,3.7572454 C102.834458,3.7572454 102.077099,5.51517276 102.077099,7.91728461 C102.077099,10.2399215 102.811485,12.0802403 104.633958,12.0802403 C105.956144,12.0802403 106.520608,11.3693406 107.346154,9.93696888 L110.898116,11.8181189 C109.882957,13.8159293 108.190296,15.744108 104.59166,15.744108" fill="#00BCD4"></path>
+            <path d="M121.916092,15.507506 L121.916092,9.52501162 L117.189258,9.52501162 L117.189258,15.507506 L112.896711,15.507506 L112.896711,0.334354492 L117.189258,0.334354492 L117.189258,5.86515415 L121.916092,5.86515415 L121.916092,0.334354492 L126.206087,0.334354492 L126.206087,15.507506 L121.916092,15.507506" fill="#00BCD4"></path>
+        </g>
+    </g>
+</svg>                            </a>
+            <div class="Contact">
+                                    Поддержка: +7 (495) 984-42-17, +7 (495) 308-01-00
+                            </div>
+        </div>
+        <div class="with-transition flex notif-box">
+            <a href="https://roi.rs/?utm_source=calltouch_promo&utm_medium=banner&utm_content=1&utm_campaign=1" target="_blank" style="margin-bottom: -3px;">
+                Сквозная аналитика от
+                <img src="/resources/img/roirs-logo.png" style="vertical-align: baseline; margin-left: 3px; border: 0;" />
+            </a>
+
+                            <a href="/notifications" class="mdl-button mdl-js-button svg--icon" style="overflow: unset;">
+                    <i class="material-icons">notifications</i>
+                                    </a>
+                        
+            <div>
+                <span id="user-actions-menu" class="mdl-button" email="">                    motim@leeching.net&nbsp;&nbsp;▾                </span>
+
+                <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="user-actions-menu">
+            
+                                                <li><a class="mdl-menu__item" href="/accounts/bills?billdoc_accountname=motim@leeching.net">Мои счета</a></li>
+                                                
+                                    <li><a class="mdl-menu__item" href="/accounts/7645/personal">Настройки</a></li>
+                                    <li><a class="mdl-menu__item" href="/logout">Выход</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="ActionsBar">
+                <div>
+            <div class="Breadcrumbs">
+    
+        <a href="/accounts/7645/sites">Список сайтов</a>
+            
+</div>
+        </div>
+
+                <div class="actions flex">
+
+                                    <span href="#school" id="education_button" class="mdl-button mdl-js-button svg--icon">                <i class="material-icons">school</i>
+            </span>
+                                                                <hr class="vertical"/>
+                <a href="/accounts/bills" title="Перейти к просмотру счетов">Баланс:
+                    <span class="green-text">0.00 руб.</span>
+               </a>
+                    </div>
+    </div>
+</header>
+
+
+
+    <div class="container">
+
+        
+        <section class="Content">
+            
+<div class="education">
+  <div class="side_header">
+    <span class="side_header_icon"><svg class="Icon icon-list " id="icon_school" viewBox="0 0 40 40">
+    <path d="M13,21.18 L13,25.18 L20,29 L27,25.18 L27,21.18 L20,25 L13,21.18 L13,21.18 Z M20,11 L9,17 L20,23 L29,18.09 L29,25 L31,25 L31,17 L20,11 L20,11 Z"></path></svg>
+</span>
+    <span class="side_header_title">Обучение</span>
+  </div>
+  <div class="education_content">
+        <div class="video-content">
+        <iframe width="290" height="200" src="https://www.youtube.com/embed/8WduPVEN3qI" frameborder="0" allowfullscreen></iframe>
+    </div>
+        
+    <div class="text-content">
+                <h2>tests, приветствуем в личном кабинете сервиса CallTouch!</h2>
+        <ul>
+            <li>Изучите на примере демо-сайта, как с помощью сервиса аналитики Calltouch оптимизировать рекламный бюджет, увеличить продажи и повысить качество обслуживания клиентов.</li>
+            <li>Установите код Calltouch и получите доступ к бесплатным аналитическим инструментам сервиса Calltouch</li>
+        </ul>
+            </div>
+  </div>
+  <div class="education_close"><span></span></div>
+</div>
+
+                                                                    <div class="all_report_button">
+                        <div class="block_button">
+                                                                                                                    <a href="#" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" onclick="window.location.href='/accounts/7645/sites/excel-all-projects-statistics?end_date_filter='+$('#end_date_filter').val()+'&begin_date_filter='+$('#begin_date_filter').val()" >
+                                Скачать сводный отчет по всем проектам
+                            </a>
+                        </div>
+                        <div id="datePickerRange" class="input-daterange input-prepend input-append input-group block_fields">
+                        <form class="form_date" action="/sessions/context/site/setGlobalFilter" method="POST" name="form_date">
+                        <input type="hidden" name="begin_date_filter" id="begin_date_filter" value="2016-05-26" />
+                        <input type="hidden" name="end_date_filter"   id="end_date_filter"   value="2016-06-02" />
+                            <span class="add-on mess">С</span>
+                            <input type="text" name="begin_date" id="begin_date" value="2016-05-26" onchange="$('#begin_date_filter').val(this.value)" />
+                            <span class="add-on mess to">ПО</span>
+                            <input type="text" name="end_date" id="end_date" value="2016-06-02" onchange="$('#end_date_filter').val(this.value)" />
+                            <input type="text" style="display: none; visibility: hidden; height: 0; width: 0;" />
+                        </form>
+                        </div>
+                        <script>
+                            $('#datePickerRange').datepicker({autoclose: true, language: 'ru', format: 'yyyy-mm-dd'}).on('changeDate', function () {
+                                $('#begin_date_filter').val($('#begin_date').val());
+                                $('#end_date_filter').val($('#end_date').val());
+                            });
+                        </script>
+                    </div>                            
+                <div class="PageActionsBar">
+        <h1 class="PageActionsBar_title"> Список сайтов </h1>
+        <div class="PageActionsBar_actions">
+                        <a href="?view=grid" class="mdl-button mdl-js-button svg--icon">
+    <svg class="Icon icon-list active" id="icon_grid" viewBox="0 0 40 40">
+    <path d="M19,19 L19,13 L13,13 L13,19 L19,19 Z M13,27 L19,27 L19,21 L13,21 L13,27 L13,27 Z M21,27 L27,27 L27,21 L21,21 L21,27 L21,27 Z M21,19 L27,19 L27,13 L21,13 L21,19 L21,19 Z"></path></svg>
+
+</a>
+<a href="?view=list" class="mdl-button mdl-js-button svg--icon">
+    <i class="material-icons md-48">list</i>
+    <!-- <svg class="Icon icon-list " id="icon_list" viewBox="0 0 40 40">
+    <path d="M11,21 L13,21 L13,19 L11,19 L11,21 L11,21 Z M11,25 L13,25 L13,23 L11,23 L11,25 L11,25 Z M11,17 L13,17 L13,15 L11,15 L11,17 L11,17 Z M15,21 L29,21 L29,19 L15,19 L15,21 L15,21 Z M15,25 L29,25 L29,23 L15,23 L15,25 L15,25 Z M15,15 L15,17 L29,17 L29,15 L15,15 L15,15 Z"></path></svg>
+ -->
+</a>
+<hr class="vertical">
+<div class="relative">
+    <span id="site-filter-menu" class="mdl-button mdl-js-button svg--icon">
+        <i class="material-icons md-48">filter_list</i>
+        <!-- <svg class="Icon icon-list " id="icon_filter" viewBox="0 0 40 40">
+    <path d="M18,26 L22,26 L22,24 L18,24 L18,26 L18,26 Z M11,14 L11,16 L29,16 L29,14 L11,14 L11,14 Z M14,21 L26,21 L26,19 L14,19 L14,21 L14,21 Z"></path></svg>
+ -->
+    </span>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="site-filter-menu">
+        <li class="mdl-menu__item" onclick="CT.Site.showHidden()">Показать скрытые сайты</li>
+    </ul>
+</div>        </div>
+    </div>
+                <div class="SiteGrid">
+                                                        
+        <div class="SiteCard SiteId-212">
+            <div class="SiteCard_header isDemo">
+                <div class="SiteCard_header-title SiteTitle" site_name="Демо сайт" site_domain="demo.calltouch.ru">
+                                           <a class="site_title" href="/accounts/7645/sites/212/statistics?begin_date_filter=2016-05-26&amp;end_date_filter=2016-06-02">
+                                                                        <span class="SiteName">Демо сайт</span>                                            </a>
+                                    </div>
+                <div class="SiteCard_header-action">
+                    <span id="site-card-menu-212" class="mdl-button mdl-js-button svg--icon"><!-- mdl-js-button mdl-button--icon -->
+                        <i class="material-icons">more_vert</i>
+                    </span>
+
+                    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="site-card-menu-212">
+                        <li class="mdl-menu__item" onclick="CT.Site.hide(this, 7645,212)">
+                            Скрыть сайт
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="SiteCard_stats">
+                <div class="SiteCard_stats-info">
+                    <div class="SiteCard_stats-row">
+                        <div class="SiteCard_stats-title">Достоверность данных</div>
+                        <div class="SiteCard_stats-value">
+                                                                                    <span class="green-text">95 %</span>
+                                                                            </div>
+                    </div>
+
+                    <div class="SiteCard_stats-row">
+                        <div class="SiteCard_stats-title">Количество сессий в сутки</div>
+                        <div class="SiteCard_stats-value">
+                                                    600
+                            /
+                                                            <span class="green-text">500</span>
+                                                                            </div>
+                        <div class="SiteCard_stats-desc">По тарифу / Текущая</div>
+                    </div>
+
+                    <div class="SiteCard_stats-row">
+                        <div class="SiteCard_stats-title">Средняя длина сессии</div>
+                        <div class="SiteCard_stats-value">
+                                                    03:00
+                            /
+                                                            <span class="green-text">02:50</span>
+                                                                            </div>
+                        <div class="SiteCard_stats-desc">По тарифу / Текущая</div>
+                    </div>
+                </div>
+                <div class="SiteCard_stats-visual">
+                    <div class="SiteCard_stats-title">Количество обращений <span data-q="q82" class="Help active"></span></div>
+                    <div id="site-chart-212"       class="SiteCard_chart"></div>
+                    <div id="site-chart-212-empty" class="SiteCard_chart_empty">
+                        <p>Добавьте всего одну строчку кода на ваш сайт, чтобы получить доступ к бесплатным аналитическим инструментам Calltouch.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="SiteCard_footer">
+                <div class="SiteCard_footer-status">
+                                    демо-сайт
+                                </div>
+                                <a class="btn" href="/accounts/7645/sites/212/statistics?begin_date_filter=2016-05-26&amp;end_date_filter=2016-06-02">Подробнее</a>
+                            </div>
+        </div>
+
+        <script>
+            $('#site-chart-212').highcharts({
+                chart: {
+                //                //                    width:  330,
+                    height: 222
+                },
+                title:   { text:    null },
+                legend:  { enabled: false },
+                credits: { enabled: false },
+                yAxis:   { title:   { text: null } },
+                xAxis:   {
+                    categories: ['Чт','Пт','Сб','Вс','Пн','Вт','Ср'],
+                    plotLines: [
+                        { value: 0, width: 1, color: '#e0e0e0', dashStyle: 'LongDash' },
+                        { value: 1, width: 1, color: '#e0e0e0', dashStyle: 'LongDash' },
+                        { value: 2, width: 1, color: '#e0e0e0', dashStyle: 'LongDash' },
+                        { value: 3, width: 1, color: '#e0e0e0', dashStyle: 'LongDash' },
+                        { value: 4, width: 1, color: '#e0e0e0', dashStyle: 'LongDash' },
+                        { value: 5, width: 1, color: '#e0e0e0', dashStyle: 'LongDash' },
+                        { value: 6, width: 1, color: '#e0e0e0', dashStyle: 'LongDash' }
+                    ]
+                },
+                series: [{
+                    name:  'Обращения',
+                    color: 'red',
+                    data:  [512,523,524,535,499,500,511]
+                }]
+            });
+        </script>
+                                                                
+        <div class="SiteCard SiteId-7550 script_need_setup">
+            <div class="SiteCard_header">
+                <div class="SiteCard_header-title SiteTitle" site_name="рашарусаdйт.рф" site_domain="рашару.рф">
+                                            <span class="site_title">
+                                                                        <span class="SiteName">рашарусаdйт.рф</span>                                                                        <span class="SiteCard_header-domain SiteDomain">рашару.рф</span>
+                                                                            </span>
+                                    </div>
+                <div class="SiteCard_header-action">
+                    <span id="site-card-menu-7550" class="mdl-button mdl-js-button svg--icon"><!-- mdl-js-button mdl-button--icon -->
+                        <i class="material-icons">more_vert</i>
+                    </span>
+
+                    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="site-card-menu-7550">
+                        <li class="mdl-menu__item" onclick="CT.Site.rename(7645,7550)">
+                            Изменить название сайта
+                        </li>
+                        
+                        <li class="mdl-menu__item" onclick="CT.Site.hide(this, 7645,7550)">
+                            Скрыть сайт
+                        </li>
+
+                                                <li class="mdl-menu__item" onclick="CT.Site.delete(7645,7550)">
+                            Удалить сайт
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+
+            <div class="SiteCard_stats">
+                <div class="SiteCard_stats-info">
+                    <div class="SiteCard_stats-row">
+                        <div class="SiteCard_stats-title">Достоверность данных</div>
+                        <div class="SiteCard_stats-value">
+                                                -
+                                                </div>
+                    </div>
+
+                    <div class="SiteCard_stats-row">
+                        <div class="SiteCard_stats-title">Количество сессий в сутки</div>
+                        <div class="SiteCard_stats-value">
+                                                    -
+                                                </div>
+                        <div class="SiteCard_stats-desc">По тарифу / Текущая</div>
+                    </div>
+
+                    <div class="SiteCard_stats-row">
+                        <div class="SiteCard_stats-title">Средняя длина сессии</div>
+                        <div class="SiteCard_stats-value">
+                                                    -
+                                                </div>
+                        <div class="SiteCard_stats-desc">По тарифу / Текущая</div>
+                    </div>
+                </div>
+                <div class="SiteCard_stats-visual">
+                    <div class="SiteCard_stats-title">Количество обращений <span data-q="q82" class="Help active"></span></div>
+                    <div id="site-chart-7550"       class="SiteCard_chart"></div>
+                    <div id="site-chart-7550-empty" class="SiteCard_chart_empty">
+                        <p>Добавьте всего одну строчку кода на ваш сайт, чтобы получить доступ к бесплатным аналитическим инструментам Calltouch.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="SiteCard_footer">
+                <div class="SiteCard_footer-status">
+                                    Ожидает подключения
+                                </div>
+                                <a href="javascript:;" id="connection_site_button_7550" account_id="7645" site_id="7550" site_domain="рашару.рф" class="connection_site_button btn">Подключить сайт</a>
+                            </div>
+        </div>
+
+        <script>
+            $('#site-chart-7550').highcharts({
+                chart: {
+                //                //                    width:  330,
+                    height: 222
+                },
+                title:   { text:    null },
+                legend:  { enabled: false },
+                credits: { enabled: false },
+                yAxis:   { title:   { text: null } },
+                xAxis:   {
+                    categories: ['Чт','Пт','Сб','Вс','Пн','Вт','Ср'],
+                    plotLines: [
+                        { value: 0, width: 1, color: '#e0e0e0', dashStyle: 'LongDash' },
+                        { value: 1, width: 1, color: '#e0e0e0', dashStyle: 'LongDash' },
+                        { value: 2, width: 1, color: '#e0e0e0', dashStyle: 'LongDash' },
+                        { value: 3, width: 1, color: '#e0e0e0', dashStyle: 'LongDash' },
+                        { value: 4, width: 1, color: '#e0e0e0', dashStyle: 'LongDash' },
+                        { value: 5, width: 1, color: '#e0e0e0', dashStyle: 'LongDash' },
+                        { value: 6, width: 1, color: '#e0e0e0', dashStyle: 'LongDash' }
+                    ]
+                },
+                series: [{
+                    name:  'Обращения',
+                    color: 'red',
+                    data:  [0,0,0,0,0,0,0]
+                }]
+            });
+        </script>
+            
+
+        <div class="SiteCard SiteId-new">
+            <a href="javascript:;" id="site_card_button" account_id="7645"></a>
+        </div>
+    </div>
+
+
+        </section>
+
+    </div>
+
+</div>
+<footer class="OB Footer">
+    <svg class="Calltouch-logo" width="163px" height="24px" viewBox="0 0 163 24">
+    <g>
+        <g transform="translate(0.076334, 0.100674)">
+            <path d="M17.161118,0.0133451701 L14.0885985,6.09573354 L19.2981019,6.14283414 L19.2981019,12.0330259 C19.1926267,14.8067279 16.9450641,17.258445 13.6301873,17.5137041 L13.6301873,23.5751589 C20.1159922,23.3711871 25.5936327,18.0867614 25.5936327,11.7124801 L25.5936327,6.09573354 L28.4274591,6.09573354 L31.5008947,0.0133451701 L17.161118,0.0133451701" fill="#37474F"></path>
+            <path d="M6.22101704,11.7805143 C6.33028719,8.34871226 8.81366394,6.23559616 12.1288024,6.05648304 L12.1288024,0.0133451701 C5.0661559,0.194944152 0.0750619793,5.39184124 0.0750619793,11.7805143 L0.0753237042,11.7857477 L0.0750619793,11.7896728 C0.0750619793,18.1782151 5.0661559,23.373673 12.1288024,23.5569728 L12.1288024,17.5137041 C8.81366394,17.3343293 6.33028719,15.2214749 6.22101704,11.7896728 L6.22101704,11.7805143" fill="#00BCD4" data-reactid=".0.0.0.0.0.0.0.1"></path>
+        </g>
+        <g transform="translate(36.307452, 3.934588)">
+            <path d="M6.94167993,15.744108 C2.42998379,15.744108 0.0237215364,12.4050668 0.0237215364,7.91728461 C0.0237215364,3.04671026 2.8872429,0.0973879254 6.96137051,0.0973879254 C10.6894543,0.0973879254 12.1647896,1.7014693 13.2047441,4.55928608 L9.39169903,6.05800847 C8.84656157,4.65042707 8.32658431,3.7572454 6.94167993,3.7572454 C5.18411301,3.7572454 4.4256609,5.51517276 4.4256609,7.91728461 C4.4256609,10.2399215 5.16332851,12.0802403 6.9847075,12.0802403 C8.3057998,12.0802403 8.8702632,11.3693406 9.69471523,9.93696888 L13.2477717,11.8181189 C12.2307895,13.8159293 10.5381286,15.744108 6.94167993,15.744108" fill="#37474F"></path>
+            <path d="M22.2346999,8.5078782 C21.6921149,6.55381544 21.4554633,5.73354656 21.2592867,4.71276751 C21.0645687,5.73354656 20.8282817,6.57568928 20.282415,8.5078782 L20.0016419,9.49912758 L22.5162023,9.49912758 L22.2346999,8.5078782 L22.2346999,8.5078782 Z M24.3587304,15.507506 L23.5346431,12.8388979 L18.9839304,12.8388979 L18.1572905,15.507506 L13.6506993,15.507506 L19.1578639,0.334354492 L23.4048311,0.334354492 L28.9130895,15.507506 L24.3587304,15.507506 L24.3587304,15.507506 Z" fill="#37474F"></path>
+            <path d="M30.3264359,15.507506 L30.3264359,0.334354492 L34.5755909,0.334354492 L34.5755909,11.8436383 L41.2940909,11.8436383 L41.2940909,15.507506 L30.3264359,15.507506" fill="#37474F"></path>
+            <path d="M43.1956908,15.507506 L43.1956908,0.334354492 L47.4430227,0.334354492 L47.4430227,11.8436383 L54.1648045,11.8436383 L54.1648045,15.507506 L43.1956908,15.507506" fill="#37474F"></path>
+            <path d="M61.6424859,3.99822217 L61.6424859,15.507506 L57.4370878,15.507506 L57.4370878,3.99822217 L53.1882974,3.99822217 L53.1882974,0.334354492 L65.8938288,0.334354492 L65.8938288,3.99822217 L61.6424859,3.99822217" fill="#00BCD4"></path>
+            <path d="M73.8043385,3.7572454 C72.1145947,3.7572454 71.159966,5.16847244 71.159966,7.90270205 C71.159966,10.6296404 72.1605394,12.0802403 73.8506478,12.0802403 C75.5385684,12.0802403 76.4953849,10.6770337 76.4953849,7.94644972 C76.4953849,5.21222011 75.493353,3.7572454 73.8043385,3.7572454 L73.8043385,3.7572454 Z M73.8043385,15.744108 C69.6842662,15.744108 66.8057945,12.9956604 66.8057945,7.94644972 C66.8057945,2.89322884 69.7298462,0.0973879254 73.8506478,0.0973879254 C77.9659798,0.0973879254 80.8495564,2.84984573 80.8495564,7.90270205 C80.8495564,12.9519127 77.9240461,15.744108 73.8043385,15.744108 L73.8043385,15.744108 Z" fill="#00BCD4"></path>
+            <path d="M89.2191484,15.744108 C85.4017276,15.744108 82.6067586,13.8378031 82.6067586,9.02519445 L82.6067586,0.334354492 L86.8985766,0.334354492 L86.8985766,9.02519445 C86.8985766,10.8884808 87.6384321,12.0405029 89.2800433,12.0405029 C90.9325938,12.0405029 91.6235874,10.8884808 91.6235874,9.02519445 L91.6235874,0.334354492 L95.9183225,0.334354492 L95.9183225,9.02519445 C95.9183225,13.8378031 93.0329227,15.744108 89.2191484,15.744108" fill="#00BCD4"></path>
+            <path d="M104.59166,15.744108 C100.080328,15.744108 97.6726076,12.4050668 97.6726076,7.91728461 C97.6726076,3.04671026 100.536858,0.0973879254 104.610986,0.0973879254 C108.340893,0.0973879254 109.815134,1.7014693 110.858006,4.55928608 L107.038397,6.05800847 C106.500188,4.65042707 105.976929,3.7572454 104.59166,3.7572454 C102.834458,3.7572454 102.077099,5.51517276 102.077099,7.91728461 C102.077099,10.2399215 102.811485,12.0802403 104.633958,12.0802403 C105.956144,12.0802403 106.520608,11.3693406 107.346154,9.93696888 L110.898116,11.8181189 C109.882957,13.8159293 108.190296,15.744108 104.59166,15.744108" fill="#00BCD4"></path>
+            <path d="M121.916092,15.507506 L121.916092,9.52501162 L117.189258,9.52501162 L117.189258,15.507506 L112.896711,15.507506 L112.896711,0.334354492 L117.189258,0.334354492 L117.189258,5.86515415 L121.916092,5.86515415 L121.916092,0.334354492 L126.206087,0.334354492 L126.206087,15.507506 L121.916092,15.507506" fill="#00BCD4"></path>
+        </g>
+    </g>
+</svg>    <a href="https://roi.rs/?utm_source=calltouch_promo&utm_medium=banner&utm_content=2&utm_campaign=2" target="_blank" style="float:left;margin-top:5px;font-weight:normal;color:inherit">Сквозная аналитика от <img src="/resources/img/roirs-logo.png" style="vertical-align: top;margin-left: 3px;border:0;" /></a>
+</footer>
+<script><!--
+t['2_end'] = (new Date()).getTime();
+--></script>
+
+</body>
+</html>

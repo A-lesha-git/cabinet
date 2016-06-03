@@ -205,7 +205,7 @@ $callsDataProvider = [
         'beginDate'=>'2016-05-18',
         'endDate'=>'2016-06-21',
         'section'=>'Журнал Звонков',
-             'callsData'=>
+        'callsData'=>
         [
             [
             'source'=>'tm.fru-it.ru', 
