@@ -1,98 +1,52 @@
 <!doctype html>
-<html lang="ru">
+<html lang="ru" class="dark">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- meta name="viewport" content="width=device-width, initial-scale=0.8" -->
+<title>Вход в систему - Calltouch</title>
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
+<link rel="stylesheet" href="/resources/modx/css/roboto.new.css">
+<link rel="stylesheet" href="/resources/modx/css/auth.css" />
 
-<script><!--
-function supports_html5_storage() {
-  try {
-    return 'localStorage' in window && window['localStorage'] !== null;
-} catch (e) {
-    return false;
-  }
-}
-window.onunload = function() {
-    if ( !window.name ) {
-        window.name = 'ct_'+ parseInt(Math.random()*1000000000) +'_';
-    }
-    if ( supports_html5_storage() ) {
-        localStorage.removeItem(window.name +"by_last_page");
-        localStorage.setItem(window.name +"by_last_page", (new Date()).getTime());
-    }
-};
-window.onload = function() {
-    t['all_1_page'] = (t['2_end'] - t['1_begin']) / 1000;
-    t['all_2_server_answer_+_page'] = t['all_1_page'] + t['all_0_server_answer'];
-    t['4_onload'] = (new Date()).getTime();
-    t['all_3_page_+_statica'] = (t['4_onload'] - t['1_begin']) / 1000;
-    t['all_4_request_+_full_load'] = (t['4_onload'] - t['0_by_last_page']) / 1000;
-};
-var t = {};
-t['1_begin'] = (new Date()).getTime();
-t['0_by_last_page'] = supports_html5_storage() ? parseInt( localStorage.getItem(window.name +"by_last_page") ) : 0;
-t['all_0_server_answer'] = (t['1_begin'] - t['0_by_last_page']) / 1000;
---></script>
-
-    <meta charset="UTF-8">
-    <title> Личный кабинет Calltouch </title>
-        <link rel="stylesheet" href="/resources/modx/css/material/material.min.css">
+<link rel="stylesheet" href="/resources/modx/css/material/material.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
-<link rel="stylesheet" href="/resources/modx/css/main.css?2"/>
-<link rel="stylesheet" href="/resources/datepicker/css/datepicker3.css"/>
-<link rel="stylesheet" charset="utf-8" href="/resources/onbording/css/style.css?8" />
-<link rel="stylesheet" type="text/css" href="/resources/onbording/components/grid/ng-grid.css?1" />
 
-<script src="/resources/onbording/js/jquery-2.1.4.min.js"></script>
+<script                 src="/resources/modx/css/material/material.min.js"></script>
+
+<!--[if IE]>
+<script src="//cdnjs.cloudflare.com/ajax/libs/es5-shim/4.1.7/es5-shim.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/classlist/2014.01.31/classList.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/selectivizr/1.0.2/selectivizr-min.js"></script>
+<![endif]-->
+
+<script type="text/javascript" src="/resources/jquery-ui-1.10.3.custom/js/jquery-1.9.1.js"></script>
+<script type="text/javascript" src="/resources/js/jquery-migrate-1.0.0.js"></script>
+<script src="https://www.google.com/recaptcha/api.js?hl=ru" async defer></script>
+
+
 <script>
-    window.jQuery2 = jQuery.noConflict(true);
-</script>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-
-<script type="text/javascript">
-    WebFontConfig = {
-        google: { families: [ 'Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic:latin,cyrillic-ext' ] }
-    };
-    (function() {
-        var wf = document.createElement('script');
-        wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
-                '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
-        wf.type = 'text/javascript';
-        wf.async = 'true';
-        var s = document.getElementsByTagName('script')[0];
-        s.parentNode.insertBefore(wf, s);
-    })();
-</script>
-<script src="/resources/datepicker/js/bootstrap-datepicker.js"></script>
-<script src="/resources/datepicker/js/locales/bootstrap-datepicker.ru.js"></script>
-<script src="/resources/onbording/js/script.js?3"></script>
-<script src="/resources/onbording/js/angular.js"></script>
-<script src="/resources/onbording/components/spinner/ct-spinner.js?1"></script>
-<script src="/resources/onbording/components/grid/ng-grid.js?1"></script>
-<script src="/resources/onbording/components/grid/ct-grid.js?1"></script>
-<script src="/resources/onbording/js/app.js?1"></script>
-<script src="/resources/js/bootstrap-dropdown.js"></script>
-<script src="/resources/js/lib.js"></script>
-<script src="/resources/js/notify.min.js"></script>
-
-<script type="text/javascript">
-if ( !window.V ) {
-    var V = {};
-    window.V = V;
-}
-</script>
-<script type="text/javascript">
-$(function(){
-    if ( window.Help ) new Help();
-});
+var V = {
+    errorMessage: {
+        username:  0
+    }
+};
+    
+//
+//
+(function(){
+    setTimeout(function() {//SHIT HACK TODO
+        if ( V.errorMessage.username ) {
+            $('#j_username').parent().addClass('is-invalid');
+        }
+    }, 1000);
+})();
 </script>
 
 
-
-
-
-    </head>
-<body class="grey">
-
+</head>
+<body class="dark">
 <!-- Google Tag Manager -->
 <noscript>&lt;iframe src="//www.googletagmanager.com/ns.html?id=GTM-WSVDK9" height="0" width="0" style="display:none;visibility:hidden"&gt;&lt;/iframe&gt;</noscript>
 <script>
@@ -104,275 +58,86 @@ $(function(){
 </script>
 <!-- End Google Tag Manager -->
 
-<div class="OB page ">
-    
+<div class="wrapper">
+    <div class="block_login mdl-color--blue-grey-800">
 <style>
-@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
-    .AccountBar {
-        padding-top: 13px;
-    }
-    .ActionsBar {
-        padding-top: 11px;
-    }
-    .ActionsBar .Breadcrumbs {
-        height: 40px;
-    }
+input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
+    background: transparent !important;
+    background-image: none;
+   /* color: rgb(0, 0, 0);*/
 }
 </style>
-<!--[if IE]>
-<style>
-.AccountBar {
-    padding-top: 13px;
-}
-.ActionsBar {
-    padding-top: 11px;
-}
-.ActionsBar .Breadcrumbs {
-    height: 40px;
-}
-</style>
-<![endif]-->
+        <div class="login_content">
+        <form action="/do-login" method="post">
+            <h2>Рады видеть, что вы с нами</h2>
+            <!-- input tabindex="0" type="text" id="j_username" style="visibility: hidden" -->
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input tabindex="1" type="text" id="j_username" name="j_username" class="mdl-textfield__input">
+                <label for="j_username" class="mdl-textfield__label">Логин или e-mail</label>
 
-<header class="OB Header with-transition">
-    <div class="AccountBar">
-        <div class="with-transition flex">
-            <a href="/dashboard">
-                                    <svg class="Calltouch-logo" width="163px" height="24px" viewBox="0 0 163 24">
-    <g>
-        <g transform="translate(0.076334, 0.100674)">
-            <path d="M17.161118,0.0133451701 L14.0885985,6.09573354 L19.2981019,6.14283414 L19.2981019,12.0330259 C19.1926267,14.8067279 16.9450641,17.258445 13.6301873,17.5137041 L13.6301873,23.5751589 C20.1159922,23.3711871 25.5936327,18.0867614 25.5936327,11.7124801 L25.5936327,6.09573354 L28.4274591,6.09573354 L31.5008947,0.0133451701 L17.161118,0.0133451701" fill="#37474F"></path>
-            <path d="M6.22101704,11.7805143 C6.33028719,8.34871226 8.81366394,6.23559616 12.1288024,6.05648304 L12.1288024,0.0133451701 C5.0661559,0.194944152 0.0750619793,5.39184124 0.0750619793,11.7805143 L0.0753237042,11.7857477 L0.0750619793,11.7896728 C0.0750619793,18.1782151 5.0661559,23.373673 12.1288024,23.5569728 L12.1288024,17.5137041 C8.81366394,17.3343293 6.33028719,15.2214749 6.22101704,11.7896728 L6.22101704,11.7805143" fill="#00BCD4" data-reactid=".0.0.0.0.0.0.0.1"></path>
-        </g>
-        <g transform="translate(36.307452, 3.934588)">
-            <path d="M6.94167993,15.744108 C2.42998379,15.744108 0.0237215364,12.4050668 0.0237215364,7.91728461 C0.0237215364,3.04671026 2.8872429,0.0973879254 6.96137051,0.0973879254 C10.6894543,0.0973879254 12.1647896,1.7014693 13.2047441,4.55928608 L9.39169903,6.05800847 C8.84656157,4.65042707 8.32658431,3.7572454 6.94167993,3.7572454 C5.18411301,3.7572454 4.4256609,5.51517276 4.4256609,7.91728461 C4.4256609,10.2399215 5.16332851,12.0802403 6.9847075,12.0802403 C8.3057998,12.0802403 8.8702632,11.3693406 9.69471523,9.93696888 L13.2477717,11.8181189 C12.2307895,13.8159293 10.5381286,15.744108 6.94167993,15.744108" fill="#37474F"></path>
-            <path d="M22.2346999,8.5078782 C21.6921149,6.55381544 21.4554633,5.73354656 21.2592867,4.71276751 C21.0645687,5.73354656 20.8282817,6.57568928 20.282415,8.5078782 L20.0016419,9.49912758 L22.5162023,9.49912758 L22.2346999,8.5078782 L22.2346999,8.5078782 Z M24.3587304,15.507506 L23.5346431,12.8388979 L18.9839304,12.8388979 L18.1572905,15.507506 L13.6506993,15.507506 L19.1578639,0.334354492 L23.4048311,0.334354492 L28.9130895,15.507506 L24.3587304,15.507506 L24.3587304,15.507506 Z" fill="#37474F"></path>
-            <path d="M30.3264359,15.507506 L30.3264359,0.334354492 L34.5755909,0.334354492 L34.5755909,11.8436383 L41.2940909,11.8436383 L41.2940909,15.507506 L30.3264359,15.507506" fill="#37474F"></path>
-            <path d="M43.1956908,15.507506 L43.1956908,0.334354492 L47.4430227,0.334354492 L47.4430227,11.8436383 L54.1648045,11.8436383 L54.1648045,15.507506 L43.1956908,15.507506" fill="#37474F"></path>
-            <path d="M61.6424859,3.99822217 L61.6424859,15.507506 L57.4370878,15.507506 L57.4370878,3.99822217 L53.1882974,3.99822217 L53.1882974,0.334354492 L65.8938288,0.334354492 L65.8938288,3.99822217 L61.6424859,3.99822217" fill="#00BCD4"></path>
-            <path d="M73.8043385,3.7572454 C72.1145947,3.7572454 71.159966,5.16847244 71.159966,7.90270205 C71.159966,10.6296404 72.1605394,12.0802403 73.8506478,12.0802403 C75.5385684,12.0802403 76.4953849,10.6770337 76.4953849,7.94644972 C76.4953849,5.21222011 75.493353,3.7572454 73.8043385,3.7572454 L73.8043385,3.7572454 Z M73.8043385,15.744108 C69.6842662,15.744108 66.8057945,12.9956604 66.8057945,7.94644972 C66.8057945,2.89322884 69.7298462,0.0973879254 73.8506478,0.0973879254 C77.9659798,0.0973879254 80.8495564,2.84984573 80.8495564,7.90270205 C80.8495564,12.9519127 77.9240461,15.744108 73.8043385,15.744108 L73.8043385,15.744108 Z" fill="#00BCD4"></path>
-            <path d="M89.2191484,15.744108 C85.4017276,15.744108 82.6067586,13.8378031 82.6067586,9.02519445 L82.6067586,0.334354492 L86.8985766,0.334354492 L86.8985766,9.02519445 C86.8985766,10.8884808 87.6384321,12.0405029 89.2800433,12.0405029 C90.9325938,12.0405029 91.6235874,10.8884808 91.6235874,9.02519445 L91.6235874,0.334354492 L95.9183225,0.334354492 L95.9183225,9.02519445 C95.9183225,13.8378031 93.0329227,15.744108 89.2191484,15.744108" fill="#00BCD4"></path>
-            <path d="M104.59166,15.744108 C100.080328,15.744108 97.6726076,12.4050668 97.6726076,7.91728461 C97.6726076,3.04671026 100.536858,0.0973879254 104.610986,0.0973879254 C108.340893,0.0973879254 109.815134,1.7014693 110.858006,4.55928608 L107.038397,6.05800847 C106.500188,4.65042707 105.976929,3.7572454 104.59166,3.7572454 C102.834458,3.7572454 102.077099,5.51517276 102.077099,7.91728461 C102.077099,10.2399215 102.811485,12.0802403 104.633958,12.0802403 C105.956144,12.0802403 106.520608,11.3693406 107.346154,9.93696888 L110.898116,11.8181189 C109.882957,13.8159293 108.190296,15.744108 104.59166,15.744108" fill="#00BCD4"></path>
-            <path d="M121.916092,15.507506 L121.916092,9.52501162 L117.189258,9.52501162 L117.189258,15.507506 L112.896711,15.507506 L112.896711,0.334354492 L117.189258,0.334354492 L117.189258,5.86515415 L121.916092,5.86515415 L121.916092,0.334354492 L126.206087,0.334354492 L126.206087,15.507506 L121.916092,15.507506" fill="#00BCD4"></path>
-        </g>
-    </g>
-</svg>                            </a>
-            <div class="Contact">
-                                    Поддержка: +7 (495) 984-42-17, +7 (495) 308-01-00
-                            </div>
+                <span class="mdl-textfield__error"></span>
+
+            </div>
+
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input tabindex="2" type="password" id="j_password" name="j_password" class="mdl-textfield__input">
+                <label for="j_password" class="mdl-textfield__label">Пароль</label>
+            </div>
+
+            <div class="block_submit">
+                <div class="block_button">
+                    <input tabindex="4" type="submit" value="Войти" class="mdl-button mdl-js-button mdl-button--raised  mdl-js-ripple-effect mdl-button--accent" />
+                </div>
+
+                <div class="block_checkbox">
+                    <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="rememberMe">
+                        <input tabindex="3" type="checkbox" id="rememberMe" name="j_remember" class="mdl-checkbox__input" checked />
+                        <span class="mdl-checkbox__label">Запомнить меня</span>
+                    </label>
+                </div>
+                
+            </div>
+            
+            <div class="descriptive_text" style="margin-top: 20px;">
+                <p>Не используете Calltouch? <a href="/registration">Попробуйте!</a></p>
+                <p><a href="/reset-password">Восстановить пароль</a></p>
+            </div>
+            
+        </form>
         </div>
-        <div class="with-transition flex notif-box">
-            <a href="https://roi.rs/?utm_source=calltouch_promo&utm_medium=banner&utm_content=1&utm_campaign=1" target="_blank" style="margin-bottom: -3px;">
-                Сквозная аналитика от
-                <img src="/resources/img/roirs-logo.png" style="vertical-align: baseline; margin-left: 3px; border: 0;" />
-            </a>
+    </div>
 
-                            <a href="/notifications" class="mdl-button mdl-js-button svg--icon" style="overflow: unset;">
-                    <i class="material-icons">notifications</i>
-                                    </a>
-                        
-            <div>
-                <span id="user-actions-menu" class="mdl-button" email="">                    a.galvis&nbsp;&nbsp;▾                </span>
 
-                <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="user-actions-menu">
-                                <li><a class="mdl-menu__item" href="/crm/reports">Отчеты</a></li>
-            
-                                                <li>
-                                            <a class="mdl-menu__item" href="/accounts/bills?billdoc_begin_date=&amp;billdoc_end_date=&amp;billdoc_accountname=&amp;billdoc_document_type=bill&amp;billdoc_status=false&amp;billinfo_status=&amp;billinfo_billing_state=&amp;billinfo_accountname=">Лицевой счет</a>
-                                        </li>
-                                    <li><a class="mdl-menu__item" href="/organizations">Список организаций</a></li>
-            
-                                        <li><a class="mdl-menu__item" href="/logout">Выход</a></li>
-                </ul>
+
+
+
+
+
+
+
+
+    
+    <div class="block_content bg_3" from_ext_site="">
+        <div style="padding-right: 502px;">
+            <div class="main">
+            <div class="logotype white"></div>
+            <h1>Сервис аналитики и управления интернет-рекламой<br />на базе коллтрекинга</h1>
+
+            </div>
+
+        </div>
+
+        <div class="block_footer"></div>
+        <div class="block_footer_content">
+            <div class="inline-item social">
+                <a target="_blank" class="facebook" href="//www.facebook.com/CallTouch"></a>
+                <a target="_blank" class="vk"       href="//vk.com/calltouch"></a>
+                <a target="_blank" class="youtube"  href="//www.youtube.com/c/calltouchru"></a>
             </div>
         </div>
-    </div>
-    <div class="ActionsBar">
-                <div>
-            <div class="Breadcrumbs">
-            <a href="/dashboard">Список организаций</a>
 
-                            
+    </div>
 </div>
-        </div>
-
-                <div class="actions flex">
-
-                                                                <hr class="vertical"/>
-                <a href="/accounts/bills" title="Перейти к просмотру счетов">Баланс:
-                    <span class="green-text">0.00 руб.</span>
-               </a>
-                    </div>
-    </div>
-</header>
-
-
-
-    <div class="container">
-
-        
-        <section class="Content">
-                        
-                        
-    <div ng-app="app">
-    <div class="OrgList OB" ng-controller="CTS.Org.OrgSearchController" has-access-to-billing="1">
-        <div class="OrgList" style=";">
-            <table id="myTable" class="tablesorter" style="width:100%">
-                <caption style="padding-bottom: 0">
-                    <style>
-                        .OB .block_h1_filter {overflow: visible; white-space: nowrap; float: left;}
-                        .OB .block_h1_filter h1  {height: 50px; float: left; line-height: 34px;}
-                        .OB .block_h1_filter div {height: 50px; float: left; margin-left: 20px;}
-                        .OB .block_h1_filter input {
-                            width: 426px;
-                            height: 34px;
-                            padding: 2px 10px;
-                            float: left;
-                            margin-bottom: 0;
-                            position: relative;
-                            background-color: #fff;
-                            border: 1px solid #ccc;
-                            border-radius: 4px 0 0 4px;
-                            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
-                            color: #555;
-                            display: block;
-                            font-size: 14px;
-                            line-height: 1.42857;
-                            transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
-                        }
-                        .OB .block_h1_filter input:focus {
-                            border-color:#00BCD4;
-                            outline: 0;
-                            -webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(0,188,212,.6);
-                            box-shadow:inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(0,188,212,.6);
-                            z-index: 3;
-                        }
-                        .OB .block_h1_filter .dropdown-container {
-                            display:inline-block;
-                            cursor: pointer;
-                            position: relative;
-                            white-space: nowrap;
-                        }
-                        .OB .block_h1_filter .dropdown {
-                            position: relative;
-                            display: inline-block;
-                            overflow: visible;
-                            white-space: nowrap;
-                            background-color: #fff;
-                            border: 1px solid #ccc;
-                            margin-left: -1px;
-                            border-radius: 0 4px 4px 0;
-                            padding: 6px 12px;
-                            font-size: 14px;
-                            z-index: 2;
-                            line-height: 1.42857143;
-                        }
-                        .OB .block_h1_filter .dropdown .caret {
-                            border-left: 4px solid transparent;
-                            border-right: 4px solid transparent;
-                            border-top: 4px dashed;
-                            display: inline-block;
-                            height: 0;
-                            margin-left: 3px;
-                            vertical-align: middle;
-                            width: 0;
-                            white-space: nowrap;
-                        }
-                        .OB .block_h1_filter .dropdown:hover,
-                        .OB .block_h1_filter .open > .dropdown {
-                            background-color: #e6e6e6;
-                        }
-                        .OB .block_h1_filter .dropdown-menu {
-                            position: absolute;
-                            display: none;
-                            z-index: 1000;
-                            white-space: nowrap;
-                            float: left;
-                            background-clip: padding-box;
-                            background-color: #fff;
-                            border: 1px solid rgba(0, 0, 0, 0.15);
-                            border-radius: 4px;
-                            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.176);
-                            font-size: 14px;
-                            left: 0;
-                            list-style: outside none none;
-                            margin: 2px 0 0;
-                            min-width: 160px;
-                            padding: 5px 0;
-                            text-align: left;
-                            top: 100%;
-                        }
-                        .OB .block_h1_filter .dropdown-menu > li > a {
-                            clear: both;
-                            display: block;
-                            font-weight: 400;
-                            line-height: 1.42857;
-                            padding: 3px 20px;
-                            white-space: nowrap;
-                        }
-                        .OB .block_h1_filter .open > .dropdown-menu {
-                            display: block;
-                        }
-                    </style>
-                    <div class="block_h1_filter">
-                        <h1>Список организаций </h1>
-                        <div>
-                            <input type="search" placeholder="Введите имя сайта или аккаунта или номер лицевого счета " style="" class="form-control ng-pristine ng-valid ng-touched" ng-model="scope.filter.filter" ng-model-options="{debounce: 700}" autofocus="true">
-                            <span class="dropdown-container">
-                                <span class="dropdown dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-target="dropdown-menu">{{scope.selected.account_status}}<span class="caret"></span></span>
-                                <ul class="dropdown-menu">
-                                    <li ng-repeat="a in scope.active_states"><a ng-click="scope.dropboxitemselected(a)">{{a.title}}</a></li>
-                                </ul>
-                            </span><!-- /btn-group -->
-                        </div>
-                    </div>
-                                    </caption>
-                <tbody><tr><td style="padding-bottom: 20px;" >
-                        <ct-spinner events="FindOrganizations">
-                             <!-- чтобы не дергаллось когда таблица строится и прокрутка появляется 1600x900) -->
-                                <ct-grid column-defs="scope.cols" ng-cloak
-                                         data-service="scope.service"
-                                         call-operator="''"
-                                         data-service-method="'FindOrganizations'"
-                                         data-external-filter="scope.filter"
-                                         style="min-height: 900px;">
-                                </ct-grid>
-                                                    </ct-spinner>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-        </section>
-
-    </div>
-
-</div>
-<footer class="OB Footer">
-    <svg class="Calltouch-logo" width="163px" height="24px" viewBox="0 0 163 24">
-    <g>
-        <g transform="translate(0.076334, 0.100674)">
-            <path d="M17.161118,0.0133451701 L14.0885985,6.09573354 L19.2981019,6.14283414 L19.2981019,12.0330259 C19.1926267,14.8067279 16.9450641,17.258445 13.6301873,17.5137041 L13.6301873,23.5751589 C20.1159922,23.3711871 25.5936327,18.0867614 25.5936327,11.7124801 L25.5936327,6.09573354 L28.4274591,6.09573354 L31.5008947,0.0133451701 L17.161118,0.0133451701" fill="#37474F"></path>
-            <path d="M6.22101704,11.7805143 C6.33028719,8.34871226 8.81366394,6.23559616 12.1288024,6.05648304 L12.1288024,0.0133451701 C5.0661559,0.194944152 0.0750619793,5.39184124 0.0750619793,11.7805143 L0.0753237042,11.7857477 L0.0750619793,11.7896728 C0.0750619793,18.1782151 5.0661559,23.373673 12.1288024,23.5569728 L12.1288024,17.5137041 C8.81366394,17.3343293 6.33028719,15.2214749 6.22101704,11.7896728 L6.22101704,11.7805143" fill="#00BCD4" data-reactid=".0.0.0.0.0.0.0.1"></path>
-        </g>
-        <g transform="translate(36.307452, 3.934588)">
-            <path d="M6.94167993,15.744108 C2.42998379,15.744108 0.0237215364,12.4050668 0.0237215364,7.91728461 C0.0237215364,3.04671026 2.8872429,0.0973879254 6.96137051,0.0973879254 C10.6894543,0.0973879254 12.1647896,1.7014693 13.2047441,4.55928608 L9.39169903,6.05800847 C8.84656157,4.65042707 8.32658431,3.7572454 6.94167993,3.7572454 C5.18411301,3.7572454 4.4256609,5.51517276 4.4256609,7.91728461 C4.4256609,10.2399215 5.16332851,12.0802403 6.9847075,12.0802403 C8.3057998,12.0802403 8.8702632,11.3693406 9.69471523,9.93696888 L13.2477717,11.8181189 C12.2307895,13.8159293 10.5381286,15.744108 6.94167993,15.744108" fill="#37474F"></path>
-            <path d="M22.2346999,8.5078782 C21.6921149,6.55381544 21.4554633,5.73354656 21.2592867,4.71276751 C21.0645687,5.73354656 20.8282817,6.57568928 20.282415,8.5078782 L20.0016419,9.49912758 L22.5162023,9.49912758 L22.2346999,8.5078782 L22.2346999,8.5078782 Z M24.3587304,15.507506 L23.5346431,12.8388979 L18.9839304,12.8388979 L18.1572905,15.507506 L13.6506993,15.507506 L19.1578639,0.334354492 L23.4048311,0.334354492 L28.9130895,15.507506 L24.3587304,15.507506 L24.3587304,15.507506 Z" fill="#37474F"></path>
-            <path d="M30.3264359,15.507506 L30.3264359,0.334354492 L34.5755909,0.334354492 L34.5755909,11.8436383 L41.2940909,11.8436383 L41.2940909,15.507506 L30.3264359,15.507506" fill="#37474F"></path>
-            <path d="M43.1956908,15.507506 L43.1956908,0.334354492 L47.4430227,0.334354492 L47.4430227,11.8436383 L54.1648045,11.8436383 L54.1648045,15.507506 L43.1956908,15.507506" fill="#37474F"></path>
-            <path d="M61.6424859,3.99822217 L61.6424859,15.507506 L57.4370878,15.507506 L57.4370878,3.99822217 L53.1882974,3.99822217 L53.1882974,0.334354492 L65.8938288,0.334354492 L65.8938288,3.99822217 L61.6424859,3.99822217" fill="#00BCD4"></path>
-            <path d="M73.8043385,3.7572454 C72.1145947,3.7572454 71.159966,5.16847244 71.159966,7.90270205 C71.159966,10.6296404 72.1605394,12.0802403 73.8506478,12.0802403 C75.5385684,12.0802403 76.4953849,10.6770337 76.4953849,7.94644972 C76.4953849,5.21222011 75.493353,3.7572454 73.8043385,3.7572454 L73.8043385,3.7572454 Z M73.8043385,15.744108 C69.6842662,15.744108 66.8057945,12.9956604 66.8057945,7.94644972 C66.8057945,2.89322884 69.7298462,0.0973879254 73.8506478,0.0973879254 C77.9659798,0.0973879254 80.8495564,2.84984573 80.8495564,7.90270205 C80.8495564,12.9519127 77.9240461,15.744108 73.8043385,15.744108 L73.8043385,15.744108 Z" fill="#00BCD4"></path>
-            <path d="M89.2191484,15.744108 C85.4017276,15.744108 82.6067586,13.8378031 82.6067586,9.02519445 L82.6067586,0.334354492 L86.8985766,0.334354492 L86.8985766,9.02519445 C86.8985766,10.8884808 87.6384321,12.0405029 89.2800433,12.0405029 C90.9325938,12.0405029 91.6235874,10.8884808 91.6235874,9.02519445 L91.6235874,0.334354492 L95.9183225,0.334354492 L95.9183225,9.02519445 C95.9183225,13.8378031 93.0329227,15.744108 89.2191484,15.744108" fill="#00BCD4"></path>
-            <path d="M104.59166,15.744108 C100.080328,15.744108 97.6726076,12.4050668 97.6726076,7.91728461 C97.6726076,3.04671026 100.536858,0.0973879254 104.610986,0.0973879254 C108.340893,0.0973879254 109.815134,1.7014693 110.858006,4.55928608 L107.038397,6.05800847 C106.500188,4.65042707 105.976929,3.7572454 104.59166,3.7572454 C102.834458,3.7572454 102.077099,5.51517276 102.077099,7.91728461 C102.077099,10.2399215 102.811485,12.0802403 104.633958,12.0802403 C105.956144,12.0802403 106.520608,11.3693406 107.346154,9.93696888 L110.898116,11.8181189 C109.882957,13.8159293 108.190296,15.744108 104.59166,15.744108" fill="#00BCD4"></path>
-            <path d="M121.916092,15.507506 L121.916092,9.52501162 L117.189258,9.52501162 L117.189258,15.507506 L112.896711,15.507506 L112.896711,0.334354492 L117.189258,0.334354492 L117.189258,5.86515415 L121.916092,5.86515415 L121.916092,0.334354492 L126.206087,0.334354492 L126.206087,15.507506 L121.916092,15.507506" fill="#00BCD4"></path>
-        </g>
-    </g>
-</svg>    <a href="https://roi.rs/?utm_source=calltouch_promo&utm_medium=banner&utm_content=2&utm_campaign=2" target="_blank" style="float:left;margin-top:5px;font-weight:normal;color:inherit">Сквозная аналитика от <img src="/resources/img/roirs-logo.png" style="vertical-align: top;margin-left: 3px;border:0;" /></a>
-</footer>
-<script><!--
-t['2_end'] = (new Date()).getTime();
---></script>
 
 </body>
 </html>

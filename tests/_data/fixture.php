@@ -22,7 +22,11 @@ return [
     'i_hyundai'=>'i_hyundai#a.galvis',
     'smclinic'=>'smclinic#a.galvis',
     'krost_ru'=>'krost_ru#a.galvis',
-    'psw' => 'kuyoh1Xie4Aif8A',
+    'welhome'=>'welhome#a.galvis',
+    'fsk-lider'=>'fsk-lider.ru#a.galvis',
+    'dkolumb'=>'valgen@list.ru#a.galvis',
+    'uservice_kia'=>'uservice_kia#a.galvis',
+    'psw' => 'NWViODU2OWIzYj',
     'accountRealTest' => 'motim@leeching.net',
     'accountRealTestPsw' => '441493',
 ];

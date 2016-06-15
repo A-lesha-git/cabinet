@@ -33,6 +33,17 @@ class CallsDiary
     public static $utmMediumSelect = '#utm_medium_select';
     public static $utmContentSelect = '#utm_content_select';
     public static $utmCampaignSelect = '#utm_campaign_select';
+    
+    //checkboxes
+    public static $markedCallsCheckbox = "//input[@name='is_marked']";
+    public static $targetCallsCheckbox = "//input[@name='is_target']";
+    public static $uniqueAndTargetCallsCheckbox = "//input[@name='is_target_uniq']";
+    public static $callsWithCommentsCheckbox = "//input[@name='with_comments']";
+    public static $successfulCallsCheckbox ="//input[@name='successful']";
+    public static $notSuccessfulCallsCheckbox = "//input[@name='no_successful']";
+    public static $uniqueCallsCheckbox =  "//input[@name='is_unique']";
+    public static $repeatCallsCheckbox = "//input[@name='is_repeated']";
+    public static $callsWithOrdersCheckbox = "//input[@name='with_orders']";
 
     public static $searchBtn = ".btn.btn-primary";
 
@@ -69,6 +80,7 @@ class CallsDiary
         $I = $this->tester;
 
         foreach($callsFiltersData as $key){
+            //выбор опций селекта или ввод значения в textfield
             if(!empty($key['source']))
                 $I->selectOption(self::$sourceSelect, $key['source']);
             if(!empty($key['medium']))
@@ -78,9 +90,9 @@ class CallsDiary
             if(!empty($key['keyword']))
                 $I->fillField(self::$keywordSearchField, $key['keyword']);
             if(!empty($key['ani']))
-                $I->fillField(self::$keywordSearchField, $key['ani']);
+                $I->fillField(self::$aniSearchField, $key['ani']);
             if(!empty($key['phone_number']))
-                $I->fillField(self::$keywordSearchField, $key['phone_number']);
+                $I->fillField(self::$phoneNumberSearchField, $key['phone_number']);
             if(!empty($key['utm_source']))
                 $I->selectOption(self::$utmSourceSelect, $key['utm_source']);
             if(!empty($key['utm_term']))
@@ -91,6 +103,36 @@ class CallsDiary
                 $I->selectOption(self::$utmContentSelect, $key['utm_content']);
             if(!empty($key['utm_campaign']))
                 $I->selectOption(self::$utmCampaignSelect, $key['utm_campaign']);
+            
+            //часть которая отвечает за выбор чекбоксов
+            if(!empty($key['is_marked']))
+                if($key['is_marked'])
+                    $I->checkOption(self::$markedCallsCheckbox);
+            if(!empty($key['is_target']))
+                if($key['is_target'])
+                    $I->checkOption(self::$targetCallsCheckbox);    
+            if(!empty($key['is_target_uniq']))
+                if($key['is_target_uniq'])
+                    $I->checkOption(self::$uniqueAndTargetCallsCheckbox);
+            if(!empty($key['with_comments']))
+                if($key['with_comments'])
+                    $I->checkOption(self::$callsWithCommentsCheckbox);
+            if(!empty($key['successful']))
+                if($key['successful'])
+                    $I->checkOption(self::$successfulCallsCheckbox);
+            if(!empty($key['no_successful']))
+                if($key['no_successful'])
+                    $I->checkOption(self::$notSuccessfulCallsCheckbox);                  
+            if(!empty($key['is_unique']))
+                if($key['is_unique'])
+                    $I->checkOption(self::$uniqueCallsCheckbox);
+            if(!empty($key['is_repeated']))
+                if($key['is_repeated'])
+                    $I->checkOption(self::$repeatCallsCheckbox);                
+            if(!empty($key['with_orders']))
+                if($key['with_orders'])
+                    $I->checkOption(self::$callsWithOrdersCheckbox);                   
+                
             //press btn "Показать"
             $I->click(self::$searchBtn);
             self::verifyNumOfCalls($key['num_of_calls']);
@@ -236,14 +278,24 @@ class CallsDiary
         return $this;
     }
     
+    
+    /*
+     * Проверка выдачи кол-ва звонков
+     * @param int
+     */
     public function verifyNumOfCalls($numOfCalls){
         $I = $this->tester;
-        if($numOfCalls != 9999)
-            $I->see('из ' . $numOfCalls, '//a');
-        //если не известно сколько звонков, но они есть
-        else {
-            $I->see('из', '//a');
-            $I->seeElement("//td[@data-path]");
+        
+        if($numOfCalls>0){
+            if($numOfCalls != 9999)
+                $I->see('из ' . $numOfCalls, '//a');
+            //если не известно сколько звонков, но они есть        
+            else {
+                $I->see('из', '//a');
+                $I->seeElement("//td[@data-path]");
+            }
+        } else {
+            self::checkThatNoCallsExist();
         }
         
         return $this;
