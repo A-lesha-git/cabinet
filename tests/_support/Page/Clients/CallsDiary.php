@@ -138,10 +138,6 @@ class CallsDiary
             self::verifyNumOfCalls($key['num_of_calls']);
         }
 
-
-
-
-
         return $this;
     }
 

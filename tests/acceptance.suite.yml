@@ -11,13 +11,14 @@ modules:
             url: http://localhost/myapp
             CURLOPT_TIMEOUT: 240
         - \Helper\Acceptance
+        - Asserts
 
 env:
     p1:
         modules:
             config:
                 PhpBrowser:
-                  url: https://lk.calltouch.ru
+                  url: https://beta.calltouch.ru
 
     p2:
             modules:

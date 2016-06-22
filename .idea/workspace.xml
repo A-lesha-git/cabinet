@@ -2,17 +2,31 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="156e872d-4c42-41ec-a5ff-60768efd75b8" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/_support/_generated/AcceptanceTesterActions.php" afterPath="$PROJECT_DIR$/tests/_support/_generated/AcceptanceTesterActions.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/_support/Objects/Call.php" afterPath="$PROJECT_DIR$/tests/_support/Objects/Call.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/_support/Page/Clients/CallsDiary.php" afterPath="$PROJECT_DIR$/tests/_support/Page/Clients/CallsDiary.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/_output/Sources.TestSearchUTMLabelsByDatesCept.fail.html" afterPath="$PROJECT_DIR$/tests/_output/Sources.TestSearchUTMLabelsByDatesCept.fail.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/acceptance/Sources/TestSearchUTMLabelsByDatesCept.php" afterPath="$PROJECT_DIR$/tests/acceptance/Sources/TestSearchUTMLabelsByDatesCept.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/acceptance/Sources/TestUtmLabelsReportCept.php" afterPath="$PROJECT_DIR$/tests/acceptance/Sources/TestUtmLabelsReportCept.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/_support/Page/Sources/UTMLabels.php" afterPath="$PROJECT_DIR$/tests/_support/Page/Sources/UTMLabels.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/acceptance.suite.yml" afterPath="$PROJECT_DIR$/tests/acceptance.suite.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/nbproject/private/private.xml" afterPath="$PROJECT_DIR$/nbproject/private/private.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="cabinet.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="156e872d-4c42-41ec-a5ff-60768efd75b8" time="1464869532020" ignored="false" />
+    <file path="/Dummy.txt" changelist="156e872d-4c42-41ec-a5ff-60768efd75b8" time="1466438062358" ignored="false" />
     <file path="/Call.php" changelist="156e872d-4c42-41ec-a5ff-60768efd75b8" time="1464887761389" ignored="false" />
     <file path="/CallsDiaryTestsSetTwoCept.php" changelist="156e872d-4c42-41ec-a5ff-60768efd75b8" time="1464886486458" ignored="false" />
     <file path="/CallsDiary.php" changelist="156e872d-4c42-41ec-a5ff-60768efd75b8" time="1464973551573" ignored="false" />
     <file path="/acceptance.suite.yml" changelist="156e872d-4c42-41ec-a5ff-60768efd75b8" time="1464888349849" ignored="false" />
     <file path="/TestFormFillManualyCept.php" changelist="156e872d-4c42-41ec-a5ff-60768efd75b8" time="1464950652830" ignored="false" />
-    <file path="$PROJECT_DIR$/tests/_output/Clients.TestFormFillManualyCept.fail.html" changelist="156e872d-4c42-41ec-a5ff-60768efd75b8" time="1464979116937" ignored="false" />
+    <file path="/UtmTag.php" changelist="156e872d-4c42-41ec-a5ff-60768efd75b8" time="1466507384196" ignored="false" />
+    <file path="/UTMLabels.php" changelist="156e872d-4c42-41ec-a5ff-60768efd75b8" time="1466538045449" ignored="false" />
+    <file path="/TestUtmLabelsReportCept.php" changelist="156e872d-4c42-41ec-a5ff-60768efd75b8" time="1466530106440" ignored="false" />
+    <file path="$USER_HOME$/PhpstormProjects/Test/test.php" changelist="156e872d-4c42-41ec-a5ff-60768efd75b8" time="1466500850882" ignored="false" />
+    <file path="/test.php" changelist="156e872d-4c42-41ec-a5ff-60768efd75b8" time="1466502545702" ignored="false" />
+    <file path="/var/www/html/test/test.php" changelist="156e872d-4c42-41ec-a5ff-60768efd75b8" time="1466502546854" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,19 +46,33 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="TestFormFillManualyCept.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/acceptance/Clients/TestFormFillManualyCept.php">
+      <file leaf-file-name="UtmTag.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/_support/Objects/UtmTag.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="58" selection-start="781" selection-end="781" vertical-scroll-proportion="-12.291667">
-              <folding />
+            <state line="91" column="4" selection-start="3369" selection-end="3369" vertical-scroll-proportion="-20.696428">
+              <folding>
+                <element signature="e#7#191#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CallsDiary.php" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/tests/_support/Page/Clients/CallsDiary.php">
+      <file leaf-file-name="UTMLabels.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/_support/Page/Sources/UTMLabels.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="65" column="16" selection-start="2120" selection-end="2120" vertical-scroll-proportion="0.8882682">
+            <state line="272" column="62" selection-start="9360" selection-end="9360" vertical-scroll-proportion="-6.785714">
+              <folding>
+                <marker date="1466538057249" expanded="true" signature="9037:9385" placeholder="..." />
+                <marker date="1466538057249" expanded="true" signature="11435:13208" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TestUtmLabelsReportCept.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/tests/acceptance/Sources/TestUtmLabelsReportCept.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="32" column="46" selection-start="857" selection-end="857" vertical-scroll-proportion="0.43509614">
               <folding />
             </state>
           </provider>
@@ -76,15 +104,18 @@
         <option value="$PROJECT_DIR$/tests/acceptance/Clients/CallsDiaryTestsSetTwoCept.php" />
         <option value="$PROJECT_DIR$/tests/acceptance/Clients/TestFormFillManualyCept.php" />
         <option value="$PROJECT_DIR$/tests/_support/Page/Clients/CallsDiary.php" />
+        <option value="$PROJECT_DIR$/tests/_support/Objects/UtmTag.php" />
+        <option value="$PROJECT_DIR$/tests/_support/Page/Sources/UTMLabels.php" />
+        <option value="$PROJECT_DIR$/tests/acceptance/Sources/TestUtmLabelsReportCept.php" />
       </list>
     </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="65" />
-    <option name="y" value="336" />
-    <option name="width" value="1301" />
-    <option name="height" value="744" />
+    <option name="x" value="992" />
+    <option name="y" value="52" />
+    <option name="width" value="928" />
+    <option name="height" value="1028" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -112,7 +143,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -181,147 +211,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Clients" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cabinet" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cabinet" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tests" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="acceptance" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Auth" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cabinet" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cabinet" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tests" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="_support" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cabinet" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cabinet" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tests" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="_support" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Page" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Navigation" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cabinet" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cabinet" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tests" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="_support" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Page" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Clients" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cabinet" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cabinet" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tests" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="_support" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Page" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AuthFunctional" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cabinet" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cabinet" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tests" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="_support" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Objects" />
+              <option name="myItemId" value="Sources" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -343,38 +233,29 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cabinet" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cabinet" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tests" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="_data" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="options.lastSelected" value="reference.settingsdialog.IDE.editor.colors.Font" />
+    <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RunManager">
+    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner />
+      <method />
+    </configuration>
     <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
       <method />
     </configuration>
     <configuration default="true" type="JavascriptDebugSession" factoryName="Local" singleton="true">
       <JSDebuggerConfigurationSettings>
-        <option name="engineId" />
+        <option name="engineId" value="embedded" />
         <option name="fileUrl" />
       </JSDebuggerConfigurationSettings>
       <method />
@@ -382,6 +263,23 @@
     <list size="0" />
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false" SSL_PROTOCOLS="all">
+    <option name="USER" value="" />
+    <option name="PASSWORD" value="" />
+    <option name="mySSHConnectionTimeout" value="30000" />
+    <option name="mySSHReadTimeout" value="30000" />
+    <option name="LAST_MERGED_REVISION" />
+    <option name="MERGE_DRY_RUN" value="false" />
+    <option name="MERGE_DIFF_USE_ANCESTRY" value="true" />
+    <option name="UPDATE_LOCK_ON_DEMAND" value="false" />
+    <option name="IGNORE_SPACES_IN_MERGE" value="false" />
+    <option name="CHECK_NESTED_FOR_QUICK_MERGE" value="false" />
+    <option name="IGNORE_SPACES_IN_ANNOTATE" value="true" />
+    <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
+    <option name="FORCE_UPDATE" value="false" />
+    <option name="IGNORE_EXTERNALS" value="false" />
+    <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="156e872d-4c42-41ec-a5ff-60768efd75b8" name="Default" comment="" />
@@ -391,14 +289,14 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="336" width="1301" height="744" extended-state="6" />
+    <frame x="992" y="52" width="928" height="1028" extended-state="4" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32294166" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27897683" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -476,120 +374,93 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/tests/acceptance/Clients/CallsDiaryTestsSetTwoCept.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/acceptance/Clients/CallsDiaryTestsSetOneCept.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="139" column="5" selection-start="4316" selection-end="4316" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#6#22#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/_support/Page/Clients/CallsDiary.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="68" selection-start="1091" selection-end="1109" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/acceptance/Clients/TestCallsDiaryFirstFormFilterCept.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="9" selection-start="16" selection-end="25" vertical-scroll-proportion="0.018203884">
-          <folding />
-        </state>
+        <state line="1" column="9" selection-start="16" selection-end="25" vertical-scroll-proportion="0.018203884" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/_output/Clients.CallsDiaryTestsSetTwoCept.fail.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/_support/Page/Navigation/Navigation.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="426" column="53" selection-start="20727" selection-end="20727" vertical-scroll-proportion="0.5210946">
-          <folding />
-        </state>
+        <state line="426" column="53" selection-start="20727" selection-end="20727" vertical-scroll-proportion="0.5210946" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/acceptance.suite.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="28" selection-start="385" selection-end="385" vertical-scroll-proportion="0.19977802">
-          <folding />
-        </state>
+        <state line="12" column="28" selection-start="385" selection-end="385" vertical-scroll-proportion="0.19977802" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/_support/Objects/Call.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="107" column="33" selection-start="3061" selection-end="3061" vertical-scroll-proportion="1.8301027">
-          <folding />
-        </state>
+        <state line="107" column="33" selection-start="3061" selection-end="3061" vertical-scroll-proportion="1.8301027" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/_data/fixture.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="2" selection-start="781" selection-end="781" vertical-scroll-proportion="0.6111111">
-          <folding />
-        </state>
+        <state line="27" column="2" selection-start="781" selection-end="781" vertical-scroll-proportion="0.6111111" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/_support/Page/AuthFunctional/AuthFunctional.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="20" selection-start="1751" selection-end="1751" vertical-scroll-proportion="-21.25">
-          <folding />
-        </state>
+        <state line="49" column="20" selection-start="1751" selection-end="1751" vertical-scroll-proportion="-21.25" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/_support/AcceptanceTester.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="20" selection-start="719" selection-end="719" vertical-scroll-proportion="0.4159292">
-          <folding />
-        </state>
+        <state line="30" column="20" selection-start="719" selection-end="719" vertical-scroll-proportion="0.4159292" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/acceptance/Clients/CallsDiaryTestsSetOneCept.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="236" column="27" selection-start="6882" selection-end="6882" vertical-scroll-proportion="0.7079646">
-          <folding>
-            <element signature="e#6#22#0" expanded="true" />
-          </folding>
-        </state>
+        <state line="236" column="27" selection-start="6882" selection-end="6882" vertical-scroll-proportion="0.7079646" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/acceptance/Clients/CallsDiaryTestsSetTwoCept.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="34" selection-start="517" selection-end="517" vertical-scroll-proportion="0.43185842">
-          <folding />
-        </state>
+        <state line="19" column="34" selection-start="517" selection-end="517" vertical-scroll-proportion="0.43185842" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/acceptance/Auth/LoginAsAdminCept.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="19" selection-start="80" selection-end="90" vertical-scroll-proportion="0.13274336">
-          <folding>
-            <element signature="e#6#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/acceptance/Clients/TestFormFillManualyCept.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="58" selection-start="781" selection-end="781" vertical-scroll-proportion="-12.291667">
-          <folding />
-        </state>
+        <state line="5" column="19" selection-start="80" selection-end="90" vertical-scroll-proportion="0.13274336" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/_support/Page/Clients/CallsDiary.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="65" column="16" selection-start="2120" selection-end="2120" vertical-scroll-proportion="0.8882682">
+        <state line="111" column="13" selection-start="4600" selection-end="4600" vertical-scroll-proportion="0.20038168" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/acceptance/Clients/TestFormFillManualyCept.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="45" column="36" selection-start="1540" selection-end="1540" vertical-scroll-proportion="0.028625954" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/_support/Objects/UtmTag.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="91" column="4" selection-start="3369" selection-end="3369" vertical-scroll-proportion="-20.696428">
+          <folding>
+            <element signature="e#7#191#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/_support/Page/Sources/UTMLabels.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="272" column="62" selection-start="9360" selection-end="9360" vertical-scroll-proportion="-6.785714">
+          <folding>
+            <marker date="1466538057249" expanded="true" signature="9037:9385" placeholder="..." />
+            <marker date="1466538057249" expanded="true" signature="11435:13208" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/acceptance/Sources/TestUtmLabelsReportCept.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="46" selection-start="857" selection-end="857" vertical-scroll-proportion="0.43509614">
           <folding />
         </state>
       </provider>

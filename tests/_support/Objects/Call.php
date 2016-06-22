@@ -77,6 +77,7 @@ class Call {
 
     public static function createCall(array $callsFilterData){
         $call = new static;
+        
         $call->setId($callsFilterData['call_id']);
         $call->setPhoneCaller($callsFilterData['ani']);
         $call->setWhereCalled($callsFilterData['phone_number']);
@@ -84,6 +85,7 @@ class Call {
         $call->setDateCall($callsFilterData['date_call']);
         if(isset($callsFilterData['call_waiting']))
             $call->setCallWaiting($callsFilterData['call_waiting']);
+        
         return $call;
     }
     
