@@ -358,7 +358,87 @@ class UTMLabels {
                     case 22:
                         $utmReportFromSite->setConversionFromGoogleAdwords($value);
                         break;
+                    // Затраты в google adwords
+                    case 23:
+                        $utmReportFromSite->setCostsGoogleAdwords($value);
+                        break;
+                    // количество продаж
+                    case 24:
+                        $utmReportFromSite->setNumOfSales($value);
+                        break;
+                    // конверсия из обращения в продажу
+                    case 25:
+                        $utmReportFromSite->setConversionFromTreatmentToSale($value);
+                        break;
+                    // Цена продажи (САС)
+                    case 26:
+                        $utmReportFromSite->setCostOfSaleCAC($value);
+                        break;
+                    // Обращения
+                    case 27:
+                        $utmReportFromSite->setTreatment($value);
+                        break;
+                    // Стоимость обращения
+                    case 28:
+                        $utmReportFromSite->setCostOfTreatment($value);
+                        break;
+                        // Сделки по звонкам
+                    case 29:
+                        $utmReportFromSite->setOrdersOnCalls($value);
+                        break;
+                    //выручка по звонкам
+                    case 30:
+                        $utmReportFromSite->setRevenueCalls($value);
+                        break;
+                    //Общая выручка
+                    case 31:
+                        $utmReportFromSite->setTotalRevenue($value);
+                        break;
+                   //ROI
+                    case 32:
+                        $utmReportFromSite->setROI($value);
+                        break;
+                    //ДРР
+                    case 33:
+                        $utmReportFromSite->setDRR($value);
+                        break;
 
+                    //Показы в спецразмещения Я.директ
+                    case 34:
+                        $utmReportFromSite->setShowsInSpecPlacement($value);
+                        break;
+                    //Показы в гарантии Я.директ
+                    case 35:
+                        $utmReportFromSite->setShowsInWarantyYD($value);
+                        break;
+                    //Соотношение показов Спец/Гарантия Я.Директ
+                    case 36:
+                        $utmReportFromSite->setRationOfShowsOfSpecOrWarantyYD($value);
+                        break;
+                    //Число посещений Я.Метрика
+                    case 37:
+                        $utmReportFromSite->setNumOfVisitsYM($value);
+                        break;
+                    //Отказы Я.Метрика %
+                    case 38:
+                        $utmReportFromSite->setFailuresYM($value);
+                        break;
+                        //Ср.длинна сессии Я.Метрика (сек)
+                    case 39:
+                        $utmReportFromSite->setAverageLengthOfSessionYM($value);
+                        break;
+                        //Глубина просмотра Я.Метрика
+                    case 40:
+                        $utmReportFromSite->setDepthOfViewYM($value);
+                        break;
+                        //Цели Я.Метрики 1 (посещения) Активность аудитории
+                    case 41:
+                        $utmReportFromSite->setGoalYMOne($value);
+                        break;
+                        //Цели Я.Метрики 2 (посещения) Загородка
+                    case 42:
+                        $utmReportFromSite->setGoalYMTwo($value);
+                        break;
                     default:
                         break;
                 }

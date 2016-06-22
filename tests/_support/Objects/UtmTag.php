@@ -33,6 +33,29 @@ class UtmTag {
     private $costsToShowInSearchYD;
     private $conversionFromGoogleAdwords;
 
+    private $costsGoogleAdwords;
+    private $numOfSales;
+    private $conversionFromTreatmentToSale;
+    private $costOfSaleCAC;
+    private $treatment;
+    private $costOfTreatment;
+    private $ordersOnCalls;
+    private $revenueCalls;
+    private $totalRevenue;
+
+    private $ROI;
+    private $DRR;
+    private $showsInSpecPlacement;
+    private $showsInWarantyYD;
+    private $rationOfShowsOfSpecOrWarantyYD;
+    private $numOfVisitsYM;
+    private $failuresYM;
+    private $averageLengthOfSessionYM;
+    private $depthOfViewYM;
+    private $goalYMOne;
+    private $goalYMTwo;
+
+
     public static function createReport(array $utmReportTotalData){
         $report = new static;
 
@@ -57,7 +80,30 @@ class UtmTag {
         $report->setCostsInRSY($utmReportTotalData['costs_in_RSY']);
         $report->setCostsToShowInSearchYD($utmReportTotalData['costs_to_show_in_search_YD']);
         $report->setConversionFromGoogleAdwords($utmReportTotalData['conversion_from_google_adw']);
-        
+
+        $report->setCostsGoogleAdwords($utmReportTotalData['costs_google_adwords']); ;
+        $report->setNumOfSales($utmReportTotalData['num_of_sales']);
+        $report->setConversionFromTreatmentToSale($utmReportTotalData['conversion_from_treatment_to_sale']);
+        $report->setCostOfSaleCAC($utmReportTotalData['cost_of_sale_CAC']);
+        $report->setTreatment($utmReportTotalData['treatment']);
+        $report->setCostOfTreatment($utmReportTotalData['cost_of_treatment']);
+        $report->setOrdersOnCalls($utmReportTotalData['orders_on_calls']);
+        $report->setRevenueCalls($utmReportTotalData['revenue_calls']);
+        $report->setTotalRevenue($utmReportTotalData['total_revenue']);
+
+        $report->setROI($utmReportTotalData['ROI']);
+        $report->setDRR($utmReportTotalData['DRR']);
+        $report->setShowsInSpecPlacement($utmReportTotalData['shows_in_spec_placement']);
+        $report->setShowsInWarantyYD($utmReportTotalData['shows_in_waranty_YD']);
+        $report->setRationOfShowsOfSpecOrWarantyYD($utmReportTotalData['ration_of_shows_of_spec_or_warantyYD']);
+        $report->setNumOfVisitsYM($utmReportTotalData['num_of_visits_YM']);
+        $report->setFailuresYM($utmReportTotalData['failures_YM']);
+        $report->setAverageLengthOfSessionYM($utmReportTotalData['average_length_of_session_YM']);
+        $report->setDepthOfViewYM($utmReportTotalData['depth_of_view_YM']);
+        $report->setGoalYMOne($utmReportTotalData['goal_YM_one']);
+        $report->setGoalYMTwo($utmReportTotalData['goal_YM_two']);
+
+
         return $report;
     }
 
@@ -257,4 +303,205 @@ class UtmTag {
     {
         return $this->showsYDInSearch;
     }
+    public function setConversionFromTreatmentToSale($conversionFromTreatmentToSale)
+    {
+        $this->conversionFromTreatmentToSale = $conversionFromTreatmentToSale;
+    }
+
+    public function getConversionFromTreatmentToSale()
+    {
+        return $this->conversionFromTreatmentToSale;
+    }
+
+    public function setCostOfSaleCAC($costOfSaleCAC)
+    {
+        $this->costOfSaleCAC = $costOfSaleCAC;
+    }
+
+    public function getCostOfSaleCAC()
+    {
+        return $this->costOfSaleCAC;
+    }
+
+    public function setCostOfTreatment($costOfTreatment)
+    {
+        $this->costOfTreatment = $costOfTreatment;
+    }
+
+    public function getCostOfTreatment()
+    {
+        return $this->costOfTreatment;
+    }
+
+    public function setCostsGoogleAdwords($costsGoogleAdwords)
+    {
+        $this->costsGoogleAdwords = $costsGoogleAdwords;
+    }
+
+    public function getCostsGoogleAdwords()
+    {
+        return $this->costsGoogleAdwords;
+    }
+
+    public function setNumOfSales($numOfSales)
+    {
+        $this->numOfSales = $numOfSales;
+    }
+
+    public function getNumOfSales()
+    {
+        return $this->numOfSales;
+    }
+
+    public function setOrdersOnCalls($ordersOnCalls)
+    {
+        $this->ordersOnCalls = $ordersOnCalls;
+    }
+
+    public function getOrdersOnCalls()
+    {
+        return $this->ordersOnCalls;
+    }
+
+    public function setRevenueCalls($revenueCalls)
+    {
+        $this->revenueCalls = $revenueCalls;
+    }
+
+    public function getRevenueCalls()
+    {
+        return $this->revenueCalls;
+    }
+
+    public function setTotalRevenue($totalRevenue)
+    {
+        $this->totalRevenue = $totalRevenue;
+    }
+
+    public function getTotalRevenue()
+    {
+        return $this->totalRevenue;
+    }
+
+    public function setTreatment($treatment)
+    {
+        $this->treatment = $treatment;
+    }
+
+    public function getTreatment()
+    {
+        return $this->treatment;
+    }
+
+    public function setDRR($DRR)
+    {
+        $this->DRR = $DRR;
+    }
+
+    public function getDRR()
+    {
+        return $this->DRR;
+    }
+
+    public function setROI($ROI)
+    {
+        $this->ROI = $ROI;
+    }
+
+    public function getROI()
+    {
+        return $this->ROI;
+    }
+
+    public function setAverageLengthOfSessionYM($averageLengthOfSessionYM)
+    {
+        $this->averageLengthOfSessionYM = $averageLengthOfSessionYM;
+    }
+
+    public function getAverageLengthOfSessionYM()
+    {
+        return $this->averageLengthOfSessionYM;
+    }
+
+    public function setDepthOfViewYM($depthOfViewYM)
+    {
+        $this->depthOfViewYM = $depthOfViewYM;
+    }
+
+    public function getDepthOfViewYM()
+    {
+        return $this->depthOfViewYM;
+    }
+
+    public function setFailuresYM($failuresYM)
+    {
+        $this->failuresYM = $failuresYM;
+    }
+
+    public function getFailuresYM()
+    {
+        return $this->failuresYM;
+    }
+
+    public function setGoalYMOne($goalYMOne)
+    {
+        $this->goalYMOne = $goalYMOne;
+    }
+
+    public function getGoalYMOne()
+    {
+        return $this->goalYMOne;
+    }
+
+    public function setGoalYMTwo($goalYMTwo)
+    {
+        $this->goalYMTwo = $goalYMTwo;
+    }
+
+    public function getGoalYMTwo()
+    {
+        return $this->goalYMTwo;
+    }
+
+    public function setNumOfVisitsYM($numOfVisitsYM)
+    {
+        $this->numOfVisitsYM = $numOfVisitsYM;
+    }
+
+    public function getNumOfVisitsYM()
+    {
+        return $this->numOfVisitsYM;
+    }
+
+    public function setRationOfShowsOfSpecOrWarantyYD($rationOfShowsOfSpecOrWarantyYD)
+    {
+        $this->rationOfShowsOfSpecOrWarantyYD = $rationOfShowsOfSpecOrWarantyYD;
+    }
+
+    public function getRationOfShowsOfSpecOrWarantyYD()
+    {
+        return $this->rationOfShowsOfSpecOrWarantyYD;
+    }
+
+    public function setShowsInSpecPlacement($showsInSpecPlacement)
+    {
+        $this->showsInSpecPlacement = $showsInSpecPlacement;
+    }
+
+    public function getShowsInSpecPlacement()
+    {
+        return $this->showsInSpecPlacement;
+    }
+
+    public function setShowsInWarantyYD($showsInWarantyYD)
+    {
+        $this->showsInWarantyYD = $showsInWarantyYD;
+    }
+
+    public function getShowsInWarantyYD()
+    {
+        return $this->showsInWarantyYD;
+    }
+
+
 }
