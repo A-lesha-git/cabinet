@@ -18,7 +18,7 @@ $utmDataProvider =
                 [
                 'begin_date'=>'2016-06-09',
                 'end_date'=>'2016-06-09',
-                'utm_filter'=>'UTM Campaign',
+                'utm_filter'=>'UTM Term',
                 'utm_campaign' => 'msk_studio_network,msk_remarketing_googl',
                 'utm_medium'=>'cpc',//cpc
                 'utm_source'=>'yandex,google',//yandex,google

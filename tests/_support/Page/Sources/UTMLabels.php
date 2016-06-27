@@ -108,20 +108,14 @@ class UTMLabels {
             $uri = self::generateUTMURI($currentUrl, $beginDate, $endDate,$tagFilter,
                                         $utmCampaign, $utmMedium, $utmContent, $utmSource,
                                         $utmTerm, $utmPositionType);
-
-
             $I->amOnPage($uri);
-            $I->see($tagFilter);
-//            if (isset($key['utm_filter']))
-//                self::chooseUTMTabFilter($key['utm_filter']);
-           // self::fillFormUtmDates($beginDate, $endDate);
+
+
             //выбрать напрямую utm метки нельзя т.к. данные подгружаются аяксом
 //            $I->selectOption("//select[@id='utm_campaign_select']",$key['utm_source'] );
 
-
-
             self::verifyThatSearchUtmtagsFormExist();
-//            self::checkUtmData($key['utm_data_to_check']);
+            self::checkUtmData($key['utm_data_to_check']);
         }
 
         return $I;
@@ -129,115 +123,8 @@ class UTMLabels {
 
 
 
-    public function generateUTMURI($currentUrl, $beginDate, $endDate, $tagFilter, $utmCampaign, $utmMedium, $utmContent, $utmSource,$utmTerm, $utmPositionType){
-        $arrUrl = explode("?", $currentUrl);
-        $uriPartOne = $arrUrl[0];
-        $uriPartTwo = "";
 
-        $utmCampaignURI = self::getUTMPartURI($utmCampaign, self::UTM_CAMPAIGN, true);
-        $uriPartTwo .= $utmCampaignURI;
-
-        $utmMediumURI = self::getUTMPartURI($utmMedium, self::UTM_MEDIUM, false);
-        $uriPartTwo .= $utmMediumURI;
-
-        $utmContentURI = self::getUTMPartURI($utmContent, self::UTM_CONTENT, false);
-        $uriPartTwo .= $utmContentURI;
-
-        $utmSourceURI = self::getUTMPartURI($utmSource, self::UTM_SOURCE, false);
-        $uriPartTwo .= $utmSourceURI;
-
-        $utmTermPartURI = self::getUTMPartURI($utmTerm, self::UTM_TERM, false);
-        $uriPartTwo .= $utmTermPartURI;
-
-        $utmPositionTypePartURI = self::getUTMPartURI($utmPositionType, self::UTM_POSITION_TYPE, false);
-        $uriPartTwo .= $utmPositionTypePartURI;
-
-
-        $partTagURI = self::getPartOfUTMTagURI($tagFilter);
-        $uriPartTwo .= self::TAG . $partTagURI . self::BEGIN_DATE . $beginDate . self::END_DATE . $endDate;
-
-
-
-        $uri = $uriPartOne . $uriPartTwo;
-
-        return $uri;
-    }
-
-
-    /*
-     * Метод возвращает часть uri parametr=value и т.д.
-     * @param String $utmTagParamValues
-     * @param String $utmTagNameParam
-     *
-     * @return возвращает часть uri с параметрами
-     */
-    public function getUTMPartURI($utmTagParamValues, $utmTagNameParam, $isUTMCampaign){
-        $utmPartPartURI = '';
-        if(!empty($utmTagParamValues)){
-            $utmTagURI ="";
-            $pos = strpos($utmTagParamValues,',');
-            if($pos !== 0){
-                $utmSourcePartURI =  explode(',', $utmTagParamValues);
-                for($i=0;$i<count($utmSourcePartURI); $i++){
-                    if($isUTMCampaign){
-                    if($i==0 ){
-                        $utmTagURI .= "?" .  $utmTagNameParam . $utmSourcePartURI[$i];
-                    }else{
-                        $utmTagURI .= "&" .  $utmTagNameParam . $utmSourcePartURI[$i];
-                    }
-                }else{
-                        $utmTagURI .=   $utmTagNameParam . $utmSourcePartURI[$i];
-                    }
-                }
-            }else {
-                $utmTagURI .=  '?' . $utmTagNameParam . $utmTagParamValues;
-            }
-
-            $utmPartPartURI .= $utmTagURI;
-        }
-
-        return $utmPartPartURI;
-    }
-
-    /*
-     * метод отдает кусок uri в зависимости от выбранного фильтра
-     * @param String $tagFilter
-     *
-     * return String
-     */
-    public function getPartOfUTMTagURI($tagFilter){
-        $utmTagURI = "";
-        switch ($tagFilter) {
-            case 'UTM Campaign':
-                $utmTagURI = self::TAG_UTM_CAMPAIGN;
-                break;
-
-            case 'UTM Source':
-                $utmTagURI = self::TAG_UTM_SOURCE;
-                break;
-
-            case 'UTM Medium':
-                $utmTagURI = self::TAG_UTM_MEDIUM;
-                break;
-            case 'UTM Term':
-                $utmTagURI = self::TAG_UTM_TERM;
-                break;
-           case 'UTM Content':
-                $utmTagURI = self::TAG_UTM_CONTENT;
-                break;
-           case 'спецразмещение или гарантия':
-                $utmTagURI = self::TAG_UTM_CONTENT;
-                break;
-
-
-            default:
-                break;
-        }
-        return $utmTagURI;
-
-    }
-
-    /*тест поиск utm меток по датам
+    /* тест поиск utm меток по датам
      * @param array() $utmData
      */
 
@@ -384,10 +271,12 @@ class UTMLabels {
         } else if ($numOfResults === 0) {
             //тестовый случай 3 когда по выбранному фильтру нет результатов
             //$numOfResults = 0
+
+            //$I->see('Для заданного фильтра значений UTM-меток не найдено.', '//h4');
             $tr = $I->grabMultiple(self::$rowUtmReportTable);
             if (count($tr) > 1)
                 $I->dontSeeElement(self::$tableUtmReport); /// если проверка проваливается, значит изменились utm отчеты
-            self::verifyNumOfParamsInReport();
+           // self::verifyNumOfParamsInReport();
         }else if (is_null($numOfResults)) {
             //тестовый случай 4, когда ввели невалидные данные, то таблица не выводится
             $I->dontSeeElement(self::$tableUtmReport);
@@ -658,6 +547,130 @@ class UTMLabels {
         
         
         return $utmReportsObjectsFromSite;
+    }
+
+    /*Метод возвращает нужный URI целиком
+     * @param String $currentUrl
+     * @param String $beginDate
+     * @param String $endDate
+     * @param String $tagFilter- активный фильтр по utm меткам
+     *
+     * Данные в форме поиска utm меток
+     * @param String $utmContent
+     * @param String $utmMedium
+     * @param String $utmCampaign
+     * @param String $utmSource
+     * @param String $utmTerm
+     * @param String $utmPositionType
+     *
+     * return String $uri
+     */
+    public function generateUTMURI($currentUrl, $beginDate, $endDate, $tagFilter, $utmCampaign, $utmMedium, $utmContent, $utmSource,$utmTerm, $utmPositionType){
+        $arrUrl = explode("?", $currentUrl);
+        $uriPartOne = $arrUrl[0];
+        $uriPartTwo = "";
+
+        $utmCampaignURI = self::getUTMPartURI($utmCampaign, self::UTM_CAMPAIGN, true);
+        $uriPartTwo .= $utmCampaignURI;
+
+        $utmMediumURI = self::getUTMPartURI($utmMedium, self::UTM_MEDIUM, false);
+        $uriPartTwo .= $utmMediumURI;
+
+        $utmContentURI = self::getUTMPartURI($utmContent, self::UTM_CONTENT, false);
+        $uriPartTwo .= $utmContentURI;
+
+        $utmSourceURI = self::getUTMPartURI($utmSource, self::UTM_SOURCE, false);
+        $uriPartTwo .= $utmSourceURI;
+
+        $utmTermPartURI = self::getUTMPartURI($utmTerm, self::UTM_TERM, false);
+        $uriPartTwo .= $utmTermPartURI;
+
+        $utmPositionTypePartURI = self::getUTMPartURI($utmPositionType, self::UTM_POSITION_TYPE, false);
+        $uriPartTwo .= $utmPositionTypePartURI;
+
+
+        $partTagURI = self::getPartOfUTMTagURI($tagFilter);
+        $uriPartTwo .= self::TAG . $partTagURI . self::BEGIN_DATE . $beginDate . self::END_DATE . $endDate;
+
+
+
+        $uri = $uriPartOne . $uriPartTwo;
+
+        return $uri;
+    }
+
+
+    /*
+     * Метод возвращает часть uri parametr=value и т.д.
+     * @param String $utmTagParamValues
+     * @param String $utmTagNameParam
+     * @param Boolean $isUTMCampaign
+     *
+     * @return возвращает часть uri с параметрами
+     */
+    public function getUTMPartURI($utmTagParamValues, $utmTagNameParam, $isUTMCampaign){
+        $utmPartPartURI = '';
+        if(!empty($utmTagParamValues)){
+            $utmTagURI ="";
+            $pos = strpos($utmTagParamValues,',');
+            if($pos !== 0){
+                $utmSourcePartURI =  explode(',', $utmTagParamValues);
+                for($i=0;$i<count($utmSourcePartURI); $i++){
+                    if($isUTMCampaign){
+                        if($i == 0 ){
+                            $utmTagURI .= "?" .  $utmTagNameParam . $utmSourcePartURI[$i];
+                        }else{
+                            $utmTagURI .= "&" .  $utmTagNameParam . $utmSourcePartURI[$i];
+                        }
+                    }else{
+                        $utmTagURI .=   $utmTagNameParam . $utmSourcePartURI[$i];
+                    }
+                }
+            }else {
+                $utmTagURI .=   $utmTagNameParam . $utmTagParamValues;
+            }
+
+            $utmPartPartURI .= $utmTagURI;
+        }
+
+        return $utmPartPartURI;
+    }
+
+    /*
+     * метод отдает кусок uri в зависимости от выбранного фильтра
+     * @param String $tagFilter
+     *
+     * return String
+     */
+    public function getPartOfUTMTagURI($tagFilter){
+        $utmTagURI = "";
+        switch ($tagFilter) {
+            case 'UTM Campaign':
+                $utmTagURI = self::TAG_UTM_CAMPAIGN;
+                break;
+
+            case 'UTM Source':
+                $utmTagURI = self::TAG_UTM_SOURCE;
+                break;
+            case 'UTM Medium':
+                $utmTagURI = self::TAG_UTM_MEDIUM;
+                break;
+            case 'UTM Term':
+                $utmTagURI = self::TAG_UTM_TERM;
+                break;
+            case 'UTM Content':
+                $utmTagURI = self::TAG_UTM_CONTENT;
+                break;
+            case 'спецразмещение или гарантия':
+                $utmTagURI = self::TAG_UTM_CONTENT;
+                break;
+
+
+            default:
+                break;
+        }
+        return $utmTagURI;
+
     }
 
 }
