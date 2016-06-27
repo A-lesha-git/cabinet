@@ -20,6 +20,11 @@ class UtmTag {
     private $onlineRequests;
     private $orders;
     private $numOfVisits;
+    private $tagsAndCategory;
+
+
+
+
     private $conversionSpecialOrGaranty;
     private $callsFromSpecialOrGaranty;
     private $conversionToCallsFromSpecOrGaranty;
@@ -66,6 +71,9 @@ class UtmTag {
         $report->setOnlineRequests($utmReportTotalData['online_requests']);;
         $report->setOrders($utmReportTotalData['orders']);
         $report->setNumOfVisits($utmReportTotalData['visits']);
+        if(isset($utmReportTotalData['tags_and_categories'])){
+            $report->setTagsAndCategory($utmReportTotalData['tags_and_categories']);
+        }
         $report->setConversionSpecialOrGaranty($utmReportTotalData['conversion_from_spec_or_garanty']);
         $report->setCallsFromSpecialOrGaranty($utmReportTotalData['calls_from_spec_or_garanty']);
         $report->setConversionToCallsFromSpecOrGaranty($utmReportTotalData['conversion_to_calls_from_spec_or_garanty']);
@@ -206,9 +214,15 @@ class UtmTag {
     function setCallsFromSpecialOrGaranty($callsFromSpecialOrGaranty) {
         $this->callsFromSpecialOrGaranty = $callsFromSpecialOrGaranty;
     }
+    public function setTagsAndCategory($tagsAndCategory)
+    {
+        $this->tagsAndCategory = $tagsAndCategory;
+    }
 
-
-
+    public function getTagsAndCategory()
+    {
+        return $this->tagsAndCategory;
+    }
 
     public function setConversionFromGoogleAdwords($conversionFromGoogleAdwords)
     {

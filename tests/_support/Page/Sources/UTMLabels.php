@@ -335,13 +335,15 @@ class UTMLabels {
         $utmReportsObjectsFromSite = array();
         
         $utmReportFromSite = new utmTag();
-        
+        $tdArr = $I->grabMultiple(self::$tdUtmReportTable);
+        $numOfColls = count($tdArr);
+        //$I->see($numOfColls . "количество колонок");
         for($i=1;$i<=count($rows); $i++){
             $collsSelector = str_replace("%row%", $i, self::$rowsUtmReportData);
             $utmReportFromSite = new utmTag();
 
 
-            for($j=1;$j<=self::NUM_OF_PARAMS_IN_REPORT;$j++){
+            for($j=1; $j<=$numOfColls; $j++){
                 
 
                 $tdData = $I->grabMultiple($collsSelector . '[' . $j . ']');
@@ -359,6 +361,8 @@ class UTMLabels {
 
 
                 switch ($j) {
+                    //комментарии к кейсам проставлены исходя из того что в отчете 42 колонки
+                    //но может быть смещение в случае 43 колонок
                     //номер UTM метки в отчете
                     case 1:
                       // $utmNum
@@ -406,49 +410,88 @@ class UTMLabels {
                     case 10:
                         $utmReportFromSite->setNumOfVisits($value);
                         break;
+
+//                    //Тэги и категории
+//                    case 11:
+//                        $utmReportFromSite->setConversionSpecialOrGaranty($value);
+//                        break;
                     // переходы из Спец\гарантия
                     case 11:
-                        $utmReportFromSite->setConversionSpecialOrGaranty($value);
+                        if($numOfColls == 42)
+                            $utmReportFromSite->setConversionSpecialOrGaranty($value);
+                        else if($numOfColls == 43)
+                            $utmReportFromSite->setTagsAndCategory($value);
                         break;
                     //
                     case 12:
-                        $utmReportFromSite->setCallsFromSpecialOrGaranty($value);
+                        if($numOfColls == 42)
+                            $utmReportFromSite->setCallsFromSpecialOrGaranty($value);
+                        else if($numOfColls == 43)
+                            $utmReportFromSite->setConversionSpecialOrGaranty($value);
                         break;
                    //Конверсия в звонки в Спец/гарантия
                     case 13:
-                        $utmReportFromSite->setConversionToCallsFromSpecOrGaranty($value);
+                        if($numOfColls == 42)
+                            $utmReportFromSite->setConversionToCallsFromSpecOrGaranty($value);
+                        else if($numOfColls == 43)
+                            $utmReportFromSite->setCallsFromSpecialOrGaranty($value);
                         break;
                     //Конверсия в сделки
                     case 14:
-                        $utmReportFromSite->setConversionToOrders($value);
+                        if($numOfColls == 42)
+                            $utmReportFromSite->setConversionToOrders($value);
+                        else if($numOfColls == 43)
+                            $utmReportFromSite->setConversionToCallsFromSpecOrGaranty($value);
                         break;
                     //конверсия в обращения
                     case 15:
-                        $utmReportFromSite->setConversionToTreatment($value);
+                        if($numOfColls == 42)
+                            $utmReportFromSite->setConversionToTreatment($value);
+                        else if($numOfColls == 43)
+                            $utmReportFromSite->setConversionToOrders($value);
                         break;
                     //переходы из Я.директ
                     case 16:
-                        $utmReportFromSite->setConversionFromYD($value);
+                        if($numOfColls == 42)
+                            $utmReportFromSite->setConversionFromYD($value);
+                        else if($numOfColls == 43)
+                            $utmReportFromSite->setConversionToOrders($value);
                         break;
                     //Показы я.директ в поиске
                     case 17:
-                        $utmReportFromSite->setShowsYDInSearch($value);
+                        if($numOfColls == 42)
+                            $utmReportFromSite->setShowsYDInSearch($value);
+                        else if($numOfColls == 43)
+                            $utmReportFromSite->setConversionFromYD($value);
                         break;
                     // Показы РСЯ
                     case 18:
-                        $utmReportFromSite->setShowsRSY($value);
+                        if($numOfColls == 42)
+                            $utmReportFromSite->setShowsRSY($value);
+                        else if($numOfColls == 43)
+                            $utmReportFromSite->setShowsYDInSearch($value);
                         break;
                     //Затраты в Яндекс.директ
                     case 19:
-                        $utmReportFromSite->setCostsYD($value);
+                        if($numOfColls == 42)
+                            $utmReportFromSite->setCostsYD($value);
+                        else if($numOfColls == 43)
+                            $utmReportFromSite->setShowsRSY($value);
                         break;
                     //Затраты на поиск в Я.директ
                     case 20:
-                        $utmReportFromSite->setCostsToShowInSearchYD($value);
+                        if($numOfColls == 42)
+                            $utmReportFromSite->setCostsToShowInSearchYD($value);
+                        else if($numOfColls == 43)
+                            $utmReportFromSite->setCostsYD($value);
                         break;
                     //Затраты РСЯ
                     case 21:
-                        $utmReportFromSite->setCostsInRSY($value);
+                       
+                        if($numOfColls == 42)
+                            $utmReportFromSite->setCostsInRSY($value);
+                        else if($numOfColls == 43)
+                            $utmReportFromSite->setCostsToShowInSearchYD($value);
                         break;
                     // Переходы из Google Adwords
                     case 22:
