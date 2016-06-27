@@ -32,7 +32,6 @@ class UtmTag {
     private $costsInRSY;
     private $costsToShowInSearchYD;
     private $conversionFromGoogleAdwords;
-
     private $costsGoogleAdwords;
     private $numOfSales;
     private $conversionFromTreatmentToSale;
@@ -42,7 +41,6 @@ class UtmTag {
     private $ordersOnCalls;
     private $revenueCalls;
     private $totalRevenue;
-
     private $ROI;
     private $DRR;
     private $showsInSpecPlacement;
@@ -80,7 +78,6 @@ class UtmTag {
         $report->setCostsInRSY($utmReportTotalData['costs_in_RSY']);
         $report->setCostsToShowInSearchYD($utmReportTotalData['costs_to_show_in_search_YD']);
         $report->setConversionFromGoogleAdwords($utmReportTotalData['conversion_from_google_adw']);
-
         $report->setCostsGoogleAdwords($utmReportTotalData['costs_google_adwords']); ;
         $report->setNumOfSales($utmReportTotalData['num_of_sales']);
         $report->setConversionFromTreatmentToSale($utmReportTotalData['conversion_from_treatment_to_sale']);
@@ -90,7 +87,6 @@ class UtmTag {
         $report->setOrdersOnCalls($utmReportTotalData['orders_on_calls']);
         $report->setRevenueCalls($utmReportTotalData['revenue_calls']);
         $report->setTotalRevenue($utmReportTotalData['total_revenue']);
-
         $report->setROI($utmReportTotalData['ROI']);
         $report->setDRR($utmReportTotalData['DRR']);
         $report->setShowsInSpecPlacement($utmReportTotalData['shows_in_spec_placement']);

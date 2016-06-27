@@ -2,26 +2,42 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="156e872d-4c42-41ec-a5ff-60768efd75b8" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/_output/Sources.TestSearchUTMLabelsByDatesCept.fail.html" afterPath="$PROJECT_DIR$/tests/_output/Sources.TestSearchUTMLabelsByDatesCept.fail.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/_output/Sources.TestUtmLabelsReportCept.fail.html" afterPath="$PROJECT_DIR$/tests/_output/Sources.TestUtmLabelsReportCept.fail.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/acceptance/Sources/TestSearchUTMLabelsByDatesCept.php" afterPath="$PROJECT_DIR$/tests/acceptance/Sources/TestSearchUTMLabelsByDatesCept.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/acceptance/Sources/TestUtmLabelsReportCept.php" afterPath="$PROJECT_DIR$/tests/acceptance/Sources/TestUtmLabelsReportCept.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/_support/Page/Sources/UTMLabels.php" afterPath="$PROJECT_DIR$/tests/_support/Page/Sources/UTMLabels.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/_support/Objects/UtmTag.php" afterPath="$PROJECT_DIR$/tests/_support/Objects/UtmTag.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/_data/fixture.php" afterPath="$PROJECT_DIR$/tests/_data/fixture.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="cabinet.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="156e872d-4c42-41ec-a5ff-60768efd75b8" time="1466593339529" ignored="false" />
+    <file path="/Dummy.txt" changelist="156e872d-4c42-41ec-a5ff-60768efd75b8" time="1467026038282" ignored="false" />
     <file path="/Call.php" changelist="156e872d-4c42-41ec-a5ff-60768efd75b8" time="1464887761389" ignored="false" />
     <file path="/CallsDiaryTestsSetTwoCept.php" changelist="156e872d-4c42-41ec-a5ff-60768efd75b8" time="1464886486458" ignored="false" />
     <file path="/CallsDiary.php" changelist="156e872d-4c42-41ec-a5ff-60768efd75b8" time="1464973551573" ignored="false" />
     <file path="/acceptance.suite.yml" changelist="156e872d-4c42-41ec-a5ff-60768efd75b8" time="1464888349849" ignored="false" />
     <file path="/TestFormFillManualyCept.php" changelist="156e872d-4c42-41ec-a5ff-60768efd75b8" time="1464950652830" ignored="false" />
     <file path="/UtmTag.php" changelist="156e872d-4c42-41ec-a5ff-60768efd75b8" time="1466595402033" ignored="false" />
-    <file path="/UTMLabels.php" changelist="156e872d-4c42-41ec-a5ff-60768efd75b8" time="1466596269162" ignored="false" />
+    <file path="/UTMLabels.php" changelist="156e872d-4c42-41ec-a5ff-60768efd75b8" time="1467048702204" ignored="false" />
     <file path="/TestUtmLabelsReportCept.php" changelist="156e872d-4c42-41ec-a5ff-60768efd75b8" time="1466598228473" ignored="false" />
     <file path="$USER_HOME$/PhpstormProjects/Test/test.php" changelist="156e872d-4c42-41ec-a5ff-60768efd75b8" time="1466500850882" ignored="false" />
     <file path="/test.php" changelist="156e872d-4c42-41ec-a5ff-60768efd75b8" time="1466502545702" ignored="false" />
     <file path="/var/www/html/test/test.php" changelist="156e872d-4c42-41ec-a5ff-60768efd75b8" time="1466502546854" ignored="false" />
+    <file path="$USER_HOME$/cabinet/tests/acceptance.suite.yml" changelist="156e872d-4c42-41ec-a5ff-60768efd75b8" time="1466752076037" ignored="false" />
+    <file path="$USER_HOME$/cabinet/tests/_support/Objects/UtmTag.php" changelist="156e872d-4c42-41ec-a5ff-60768efd75b8" time="1466752217571" ignored="false" />
+    <file path="$USER_HOME$/cabinet/tests/_support/Page/Sources/UtmTags.php" changelist="156e872d-4c42-41ec-a5ff-60768efd75b8" time="1466752951482" ignored="false" />
+    <file path="$USER_HOME$/cabinet/tests/acceptance/Sources/TestSearchUTMTagsByDatesCept.php" changelist="156e872d-4c42-41ec-a5ff-60768efd75b8" time="1466752991366" ignored="false" />
+    <file path="/TestSearchUTMTagsByDatesCept.php" changelist="156e872d-4c42-41ec-a5ff-60768efd75b8" time="1466752985597" ignored="false" />
+    <file path="/UtmTags.php" changelist="156e872d-4c42-41ec-a5ff-60768efd75b8" time="1466752951483" ignored="false" />
+    <file path="$USER_HOME$/cabinet/tests/_data/fixture.php" changelist="156e872d-4c42-41ec-a5ff-60768efd75b8" time="1466753016710" ignored="false" />
+    <file path="$USER_HOME$/141/tests/acceptance/Sources/TestSearchUTMTagsByDatesCept.php" changelist="156e872d-4c42-41ec-a5ff-60768efd75b8" time="1466756124244" ignored="false" />
+    <file path="$USER_HOME$/141/tests/acceptance/Sources/TestUtmReportCept.php" changelist="156e872d-4c42-41ec-a5ff-60768efd75b8" time="1466853667575" ignored="false" />
+    <file path="/TestUtmReportCept.php" changelist="156e872d-4c42-41ec-a5ff-60768efd75b8" time="1466755935066" ignored="false" />
+    <file path="$USER_HOME$/141/tests/_data/fixture.php" changelist="156e872d-4c42-41ec-a5ff-60768efd75b8" time="1466756728288" ignored="false" />
+    <file path="/TestSearchUTMTagsCept.php" changelist="156e872d-4c42-41ec-a5ff-60768efd75b8" time="1467035236365" ignored="false" />
+    <file path="/TestSearchUTMLabelsByDatesCept.php" changelist="156e872d-4c42-41ec-a5ff-60768efd75b8" time="1466772674545" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,49 +51,25 @@
   <component name="DaemonCodeAnalyzer">
     <disable_hints />
   </component>
-  <component name="DockManager">
-    <window id="1">
-      <content type="file-editors">
-        <state>
-          <leaf>
-            <file leaf-file-name="UtmTag.php" pinned="false" current="true" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/tests/_support/Objects/UtmTag.php">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state line="322" column="36" selection-start="9740" selection-end="9740" vertical-scroll-proportion="0.64763993">
-                    <folding>
-                      <element signature="e#7#191#0" expanded="true" />
-                    </folding>
-                  </state>
-                </provider>
-              </entry>
-            </file>
-          </leaf>
-        </state>
-      </content>
-    </window>
-  </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
     <favorites_list name="cabinet" />
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="UTMLabels.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="UTMLabels.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tests/_support/Page/Sources/UTMLabels.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="398" column="47" selection-start="14879" selection-end="14879" vertical-scroll-proportion="-10.678572">
-              <folding>
-                <marker date="1466596269394" expanded="true" signature="9037:9385" placeholder="..." />
-                <marker date="1466596269394" expanded="true" signature="11435:13208" placeholder="..." />
-              </folding>
+            <state line="173" column="88" selection-start="6435" selection-end="6435" vertical-scroll-proportion="0.26442307">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TestUtmLabelsReportCept.php" pinned="false" current="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/tests/acceptance/Sources/TestUtmLabelsReportCept.php">
+      <file leaf-file-name="TestSearchUTMTagsCept.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/acceptance/Sources/TestSearchUTMTagsCept.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="34" column="48" selection-start="907" selection-end="907" vertical-scroll-proportion="0.37810946">
+            <state line="39" column="0" selection-start="1201" selection-end="1201" vertical-scroll-proportion="-26.464285">
               <folding />
             </state>
           </provider>
@@ -110,17 +102,20 @@
         <option value="$PROJECT_DIR$/tests/acceptance/Clients/TestFormFillManualyCept.php" />
         <option value="$PROJECT_DIR$/tests/_support/Page/Clients/CallsDiary.php" />
         <option value="$PROJECT_DIR$/tests/_support/Objects/UtmTag.php" />
-        <option value="$PROJECT_DIR$/tests/_support/Page/Sources/UTMLabels.php" />
         <option value="$PROJECT_DIR$/tests/acceptance/Sources/TestUtmLabelsReportCept.php" />
+        <option value="$PROJECT_DIR$/tests/_data/fixture.php" />
+        <option value="$PROJECT_DIR$/tests/acceptance/Sources/TestSearchUTMLabelsByDatesCept.php" />
+        <option value="$PROJECT_DIR$/tests/acceptance/Sources/TestSearchUTMTagsCept.php" />
+        <option value="$PROJECT_DIR$/tests/_support/Page/Sources/UTMLabels.php" />
       </list>
     </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="992" />
-    <option name="y" value="52" />
-    <option name="width" value="928" />
-    <option name="height" value="1028" />
+    <option name="x" value="65" />
+    <option name="y" value="24" />
+    <option name="width" value="1855" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -136,7 +131,7 @@
     <option name="STATE" value="0" />
   </component>
   <component name="ProjectView">
-    <navigator proportions="" version="1" splitterProportion="0.5">
+    <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -147,14 +142,51 @@
       <autoscrollFromSource />
       <sortByType />
     </navigator>
-    <panes />
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cabinet" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cabinet" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cabinet" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cabinet" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cabinet" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tests" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="options.lastSelected" value="reference.settingsdialog.IDE.editor.colors.Font" />
-    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="last_opened_file_path" value="$USER_HOME$/141/tests" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -200,15 +232,14 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="992" y="52" width="928" height="1028" extended-state="4" />
+    <frame x="65" y="24" width="1855" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27897683" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.12742382" sideWeight="0.65448505" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -217,6 +248,7 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -281,38 +313,18 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="1" />
+      <option name="time" value="2" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/tests/acceptance/Clients/TestCallsDiaryFirstFormFilterCept.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="9" selection-start="16" selection-end="25" vertical-scroll-proportion="0.018203884" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/_output/Clients.CallsDiaryTestsSetTwoCept.fail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/_support/Page/Navigation/Navigation.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="426" column="53" selection-start="20727" selection-end="20727" vertical-scroll-proportion="0.5210946" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/acceptance.suite.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="28" selection-start="385" selection-end="385" vertical-scroll-proportion="0.19977802" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/_support/Objects/Call.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="107" column="33" selection-start="3061" selection-end="3061" vertical-scroll-proportion="1.8301027" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/_data/fixture.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="2" selection-start="781" selection-end="781" vertical-scroll-proportion="0.6111111" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/_support/Page/AuthFunctional/AuthFunctional.php">
@@ -350,29 +362,44 @@
         <state line="45" column="36" selection-start="1540" selection-end="1540" vertical-scroll-proportion="0.028625954" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/_support/Page/Sources/UTMLabels.php">
+    <entry file="file://$PROJECT_DIR$/tests/acceptance.suite.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="398" column="47" selection-start="14879" selection-end="14879" vertical-scroll-proportion="-10.678572">
-          <folding>
-            <marker date="1466596269394" expanded="true" signature="9037:9385" placeholder="..." />
-            <marker date="1466596269394" expanded="true" signature="11435:13208" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/acceptance/Sources/TestUtmLabelsReportCept.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="48" selection-start="907" selection-end="907" vertical-scroll-proportion="0.37810946">
-          <folding />
-        </state>
+        <state line="8" column="12" selection-start="261" selection-end="261" vertical-scroll-proportion="0.18203592" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/_support/Objects/UtmTag.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="322" column="36" selection-start="9740" selection-end="9740" vertical-scroll-proportion="0.64763993">
-          <folding>
-            <element signature="e#7#191#0" expanded="true" />
-          </folding>
+        <state line="59" column="61" selection-start="1620" selection-end="1620" vertical-scroll-proportion="-0.15861215" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/_data/fixture.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="25" selection-start="777" selection-end="777" vertical-scroll-proportion="0.47218934" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/acceptance/Sources/TestSearchUTMLabelsByDatesCept.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="0" selection-start="404" selection-end="566" vertical-scroll-proportion="-1.0664376" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/acceptance/Sources/TestUtmLabelsReportCept.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="3" selection-start="3" selection-end="3" vertical-scroll-proportion="-0.65292096">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/acceptance/Sources/TestSearchUTMTagsCept.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="39" column="0" selection-start="1201" selection-end="1201" vertical-scroll-proportion="-26.464285">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/_support/Page/Sources/UTMLabels.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="173" column="88" selection-start="6435" selection-end="6435" vertical-scroll-proportion="0.26442307">
+          <folding />
         </state>
       </provider>
     </entry>

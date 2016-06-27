@@ -37,17 +37,207 @@ class UTMLabels {
     
     //колонки определенной %row% строки
     public static $rowsUtmReportData = "//table[@id='table_expand_list_result']/tbody/tr[%row%]/td";
-    
-    
+
     //селектор utm фильтров: UTM campaign; UTM content; UTM Term; UTM Source
     // %filter% - по номеру элемента li определяется какой именно фильтр выбрать
     public static $utmTabFilter = "//ul[@id='tabs']/li[%filter%]/a";
+
+    //форма поиска utm меток
+    public  static $formUtmTagsFilter = "//form[@class='utm_tags_filter']";
+    //select Utm campaign
+    public static $selectUTMCampaign = '#utm_campaign_select';
+    //select UTM Medium
+    public static $selectUTMMedium = 'select id="utm_medium_select"';
+    //select UTM Medium
+    public static $selectUTMContent = "#utm_content_select";
+    //select UTM Source
+    public static $selectUTMSource = "#utm_source_select";
+    //select UTM Term
+    public static $selectUTMTerm = "#utm_term_select";
+    //select спецразмещение или гарантия
+    public static $selectPositionType = "#position_type_select";
+
+    //части uri для страниц utm меток
+
+    CONST BEGIN_DATE = '&begin_date_filter=';
+    CONST END_DATE = '&end_date_filter=';
+
+    //параметр tag
+    CONST TAG = '&tag=';
+    //значения которые принимает параметр tag в url
+    CONST TAG_UTM_CAMPAIGN = 'utm_campaign';
+    CONST TAG_UTM_MEDIUM = 'utm_medium';
+    CONST TAG_UTM_SOURCE = 'utm_source';
+    CONST TAG_UTM_CONTENT = 'utm_content';
+    CONST TAG_UTM_TERM = 'utm_term';
+    CONST TAG_UTM_POSITION_TYPE = 'position_type';
+
+    CONST UTM_CAMPAIGN = 'utm_campaign[]=';
+    CONST UTM_MEDIUM = '&utm_medium[]=';
+    CONST UTM_SOURCE = '&utm_source[]=';
+    CONST UTM_CONTENT = '&utm_content[]=';
+    CONST UTM_TERM = '&utm_term[]=';
+    CONST UTM_POSITION_TYPE = '&position_type[]=';
+
 
     public function __construct(\Codeception\Actor $I) {
         $this->tester = $I;
     }
 
     /*
+     * тест поиска utm меток по значениям UTM Campaign, UTM Source и т.д.
+     *  @param array() $utmData
+     */
+    public function testSearchByUtmValues($utmData){
+        $I = $this->tester;
+
+
+
+        foreach ($utmData as $key) {
+            $beginDate = $key['begin_date'];
+            $endDate = $key['end_date'];
+            $tagFilter = $key['utm_filter'];
+            $utmCampaign = $key['utm_campaign'];
+            $utmMedium = $key['utm_medium'];
+            $utmContent = $key['utm_content'];
+            $utmSource = $key['utm_source'];
+            $utmTerm = $key['utm_term'];
+            $utmPositionType = $key['utm_position_type'];
+            $currentUrl = $I->grabFromCurrentUrl();
+
+            $uri = self::generateUTMURI($currentUrl, $beginDate, $endDate,$tagFilter,
+                                        $utmCampaign, $utmMedium, $utmContent, $utmSource,
+                                        $utmTerm, $utmPositionType);
+
+
+            $I->amOnPage($uri);
+            $I->see($tagFilter);
+//            if (isset($key['utm_filter']))
+//                self::chooseUTMTabFilter($key['utm_filter']);
+           // self::fillFormUtmDates($beginDate, $endDate);
+            //выбрать напрямую utm метки нельзя т.к. данные подгружаются аяксом
+//            $I->selectOption("//select[@id='utm_campaign_select']",$key['utm_source'] );
+
+
+
+            self::verifyThatSearchUtmtagsFormExist();
+//            self::checkUtmData($key['utm_data_to_check']);
+        }
+
+        return $I;
+    }
+
+
+
+    public function generateUTMURI($currentUrl, $beginDate, $endDate, $tagFilter, $utmCampaign, $utmMedium, $utmContent, $utmSource,$utmTerm, $utmPositionType){
+        $arrUrl = explode("?", $currentUrl);
+        $uriPartOne = $arrUrl[0];
+        $uriPartTwo = "";
+
+        $utmCampaignURI = self::getUTMPartURI($utmCampaign, self::UTM_CAMPAIGN, true);
+        $uriPartTwo .= $utmCampaignURI;
+
+        $utmMediumURI = self::getUTMPartURI($utmMedium, self::UTM_MEDIUM, false);
+        $uriPartTwo .= $utmMediumURI;
+
+        $utmContentURI = self::getUTMPartURI($utmContent, self::UTM_CONTENT, false);
+        $uriPartTwo .= $utmContentURI;
+
+        $utmSourceURI = self::getUTMPartURI($utmSource, self::UTM_SOURCE, false);
+        $uriPartTwo .= $utmSourceURI;
+
+        $utmTermPartURI = self::getUTMPartURI($utmTerm, self::UTM_TERM, false);
+        $uriPartTwo .= $utmTermPartURI;
+
+        $utmPositionTypePartURI = self::getUTMPartURI($utmPositionType, self::UTM_POSITION_TYPE, false);
+        $uriPartTwo .= $utmPositionTypePartURI;
+
+
+        $partTagURI = self::getPartOfUTMTagURI($tagFilter);
+        $uriPartTwo .= self::TAG . $partTagURI . self::BEGIN_DATE . $beginDate . self::END_DATE . $endDate;
+
+
+
+        $uri = $uriPartOne . $uriPartTwo;
+
+        return $uri;
+    }
+
+
+    /*
+     * Метод возвращает часть uri parametr=value и т.д.
+     * @param String $utmTagParamValues
+     * @param String $utmTagNameParam
+     *
+     * @return возвращает часть uri с параметрами
+     */
+    public function getUTMPartURI($utmTagParamValues, $utmTagNameParam, $isUTMCampaign){
+        $utmPartPartURI = '';
+        if(!empty($utmTagParamValues)){
+            $utmTagURI ="";
+            $pos = strpos($utmTagParamValues,',');
+            if($pos !== 0){
+                $utmSourcePartURI =  explode(',', $utmTagParamValues);
+                for($i=0;$i<count($utmSourcePartURI); $i++){
+                    if($isUTMCampaign){
+                    if($i==0 ){
+                        $utmTagURI .= "?" .  $utmTagNameParam . $utmSourcePartURI[$i];
+                    }else{
+                        $utmTagURI .= "&" .  $utmTagNameParam . $utmSourcePartURI[$i];
+                    }
+                }else{
+                        $utmTagURI .=   $utmTagNameParam . $utmSourcePartURI[$i];
+                    }
+                }
+            }else {
+                $utmTagURI .=  '?' . $utmTagNameParam . $utmTagParamValues;
+            }
+
+            $utmPartPartURI .= $utmTagURI;
+        }
+
+        return $utmPartPartURI;
+    }
+
+    /*
+     * метод отдает кусок uri в зависимости от выбранного фильтра
+     * @param String $tagFilter
+     *
+     * return String
+     */
+    public function getPartOfUTMTagURI($tagFilter){
+        $utmTagURI = "";
+        switch ($tagFilter) {
+            case 'UTM Campaign':
+                $utmTagURI = self::TAG_UTM_CAMPAIGN;
+                break;
+
+            case 'UTM Source':
+                $utmTagURI = self::TAG_UTM_SOURCE;
+                break;
+
+            case 'UTM Medium':
+                $utmTagURI = self::TAG_UTM_MEDIUM;
+                break;
+            case 'UTM Term':
+                $utmTagURI = self::TAG_UTM_TERM;
+                break;
+           case 'UTM Content':
+                $utmTagURI = self::TAG_UTM_CONTENT;
+                break;
+           case 'спецразмещение или гарантия':
+                $utmTagURI = self::TAG_UTM_CONTENT;
+                break;
+
+
+            default:
+                break;
+        }
+        return $utmTagURI;
+
+    }
+
+    /*тест поиск utm меток по датам
      * @param array() $utmData
      */
 
@@ -89,23 +279,7 @@ class UTMLabels {
         return $I;
     }
 
-    /*
-     * В методе происходит проверка utm данных
-     * @param array() $utmData
-     */
 
-    public function checkUtmData($utmData) {
-        $I = $this->tester;
-
-        foreach ($utmData as $key) {
-            self::checkNumberOfResults($key['num_of_results']);
-            if(isset($key['utm_report_data'])){
-                self::checkUtmReport($key['utm_report_data']);
-            }
-        }
-
-        return $I;
-    }
     
     /*
      * С помощью данного метода выбирается нужная вкладка(фильтр) utm метки
@@ -147,6 +321,42 @@ class UTMLabels {
         return $I;
     }
 
+    /*
+     * Метод проверяет что форма поиска utm меток существует на странице
+     */
+    public function verifyThatSearchUtmtagsFormExist(){
+        $I = $this->tester;
+
+        $I->seeElement(self::$formUtmTagsFilter);
+        $I->seeElement(self::$selectUTMCampaign);
+        $I->seeInSource(self::$selectUTMMedium);
+        $I->seeElement(self::$selectUTMContent);
+        $I->seeElement(self::$selectUTMSource);
+        $I->seeElement(self::$selectUTMTerm);
+        $I->seeElement(self::$selectPositionType);
+
+        return $I;
+    }
+
+
+
+    /*
+     * В методе происходит проверка utm данных
+     * @param array() $utmData
+     */
+
+    public function checkUtmData($utmData) {
+        $I = $this->tester;
+
+        foreach ($utmData as $key) {
+            self::checkNumberOfResults($key['num_of_results']);
+            if(isset($key['utm_report_data'])){
+                self::checkUtmReport($key['utm_report_data']);
+            }
+        }
+
+        return $I;
+    }
 
     /*
      * в методе происходит проверка utm отчетов
@@ -208,13 +418,10 @@ class UTMLabels {
 
         $utmReportObjects = self::getUtmReportObjects($utmReportData);
         
-        $utmRepObgectsFromSite = array();
+
         $utmRepObgectsFromSite = self::getUtmReportObjectsFromSite();
         
-//        foreach ($utmRepObgectsFromSite as $objSite) {
-//         //   $I->see($objSite->getCalls());
-//        }
-        //$I->assertEquals(count($utmReportObjects), count($utmRepObgectsFromSite) );//+1 т.к. есть еще итоговый результат
+
         $I->assertEquals($utmRepObgectsFromSite, $utmReportObjects);
         
         return $I;

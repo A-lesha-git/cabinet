@@ -27,14 +27,7 @@ $utmDataProvider =
                 [
                     [                     
                         'num_of_results'=>18,
-                        'utm_report_data'=>
-                        [
-                            [
-                                'calls'=>'12',
-                                'unique_calls'=>'9',
-                                //'target_calls'=>''
-                            ],
-                        ]
+
                     ],
                 ]
             ],
