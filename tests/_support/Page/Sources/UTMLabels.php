@@ -57,6 +57,11 @@ class UTMLabels {
     //select спецразмещение или гарантия
     public static $selectPositionType = "#position_type_select";
 
+    //ссылки и значения на журнал звонков
+    public static $callsAndHrefs = ".//*[@id='table_expand_list_result']/tbody/tr/td[3]/a";
+    //utm name coll
+    public static $utmNameColl = ".//*[@id='table_expand_list_result']/tbody/tr/td[2]";
+
     //части uri для страниц utm меток
 
     CONST BEGIN_DATE = '&begin_date_filter=';
@@ -72,7 +77,7 @@ class UTMLabels {
     CONST TAG_UTM_TERM = 'utm_term';
     CONST TAG_UTM_POSITION_TYPE = 'position_type';
 
-    CONST UTM_CAMPAIGN = 'utm_campaign[]=';
+    CONST UTM_CAMPAIGN = '&utm_campaign[]=';
     CONST UTM_MEDIUM = '&utm_medium[]=';
     CONST UTM_SOURCE = '&utm_source[]=';
     CONST UTM_CONTENT = '&utm_content[]=';
@@ -84,14 +89,53 @@ class UTMLabels {
         $this->tester = $I;
     }
 
+
+    /*
+     * в методе
+     */
+    public function testSourcesUtmAndCalls($sourcesUtmCallsData){
+        $I = $this->tester;
+
+        $callPage = new \Page\Clients\CallsDiary($I);
+
+        foreach ($sourcesUtmCallsData as $key) {
+            $beginDate = $key['begin_date'];
+            $endDate = $key['end_date'];
+            $tagFilter = $key['utm_filter'];
+            $utmCampaign = $key['utm_campaign'];
+            $utmMedium = $key['utm_medium'];
+            $utmContent = $key['utm_content'];
+            $utmSource = $key['utm_source'];
+            $utmTerm = $key['utm_term'];
+            $utmPositionType = $key['utm_position_type'];
+            $currentUrl = $I->grabFromCurrentUrl();
+
+            $uri = self::generateUTMURI($currentUrl, $beginDate, $endDate,$tagFilter,
+                $utmCampaign, $utmMedium, $utmContent, $utmSource,
+                $utmTerm, $utmPositionType);
+            $I->amOnPage($uri);
+
+            $hrefs = $I->grabMultiple(self::$callsAndHrefs, 'href');
+
+            for($i = 0; $i < count($hrefs); $i++){
+                $I->amOnPage($hrefs[$i]);
+                $callPage->verifyThatCallsExistsById($key['calls'][$i]);
+            }
+
+        }
+
+
+        return $I;
+
+    }
+
+
     /*
      * тест поиска utm меток по значениям UTM Campaign, UTM Source и т.д.
      *  @param array() $utmData
      */
     public function testSearchByUtmValues($utmData){
         $I = $this->tester;
-
-
 
         foreach ($utmData as $key) {
             $beginDate = $key['begin_date'];
@@ -111,16 +155,12 @@ class UTMLabels {
             $I->amOnPage($uri);
 
 
-            //выбрать напрямую utm метки нельзя т.к. данные подгружаются аяксом
-//            $I->selectOption("//select[@id='utm_campaign_select']",$key['utm_source'] );
-
             self::verifyThatSearchUtmtagsFormExist();
             self::checkUtmData($key['utm_data_to_check']);
         }
 
         return $I;
     }
-
 
 
 
@@ -265,7 +305,17 @@ class UTMLabels {
                 self::verifyNumOfParamsInReport();
             } else {
                 //тестовый случай 2 - изначально известно кол-во результатов
-                $I->seeNumberOfElements(self::$rowUtmReportTable, $numOfResults + 1); // +1 т.к. есть строка(tr) с наименованием, остальные с результатами. 
+                $txt = $I->grabTextFrom("//table[@id='table_expand_list_result']/tbody/tr[1]/td[3]");
+                $pos = strpos($txt, "Всего за период");
+                //если строки с итоговыми данными нет
+                if($pos === false){
+                    $I->seeNumberOfElements(self::$rowUtmReportTable, $numOfResults);
+                    //$I->see($pos);
+                }
+                else{
+                    $I->seeNumberOfElements(self::$rowUtmReportTable, $numOfResults+1);// +1 т.к. есть строка(tr) с наименованием, остальные с результатами.
+                    //$I->see($pos);
+                }
                 self::verifyNumOfParamsInReport();
             }
         } else if ($numOfResults === 0) {
@@ -301,7 +351,9 @@ class UTMLabels {
         
         return $I;
     }
-
+    /*
+     * Проверка utm отчетов
+     */
     public  function checkUtmReport($utmReportData) {
         $I = $this->tester;
 
@@ -309,9 +361,9 @@ class UTMLabels {
         
 
         $utmRepObgectsFromSite = self::getUtmReportObjectsFromSite();
-        
 
-        $I->assertEquals($utmRepObgectsFromSite, $utmReportObjects);
+        $I->assertEquals(count($utmRepObgectsFromSite), count($utmReportObjects));
+        $I->assertEquals($utmReportObjects, $utmRepObgectsFromSite);
         
         return $I;
     }
@@ -326,15 +378,14 @@ class UTMLabels {
         
         return $utmReportObjects;
     }
-
+    //@return  array() $utmReportsObjectsFromSite возвращает массив объектов
     public function getUtmReportObjectsFromSite() {
         $I = $this->tester;
         
         $rows = $I->grabMultiple(self::$rowUtmReportTable);
 
         $utmReportsObjectsFromSite = array();
-        
-        $utmReportFromSite = new utmTag();
+
         $tdArr = $I->grabMultiple(self::$tdUtmReportTable);
         $numOfColls = count($tdArr);
         //$I->see($numOfColls . "количество колонок");
@@ -372,7 +423,7 @@ class UTMLabels {
                         if($j==1 && $i==1)
                             $utmReportFromSite->setUtmName(1);
                         $utmReportFromSite->setUtmName($value);
-                        //$I->see($utmReportFromSite->getUtmName(),'//span');
+//                        $I->see($utmReportFromSite->getUtmName(),'//span');
                         break;
                     //все звонки по UTM метке 
                     case 3:
@@ -440,22 +491,26 @@ class UTMLabels {
                     case 14:
                         if($numOfColls == 42)
                             $utmReportFromSite->setConversionToOrders($value);
-                        else if($numOfColls == 43)
+                        else if($numOfColls == 43){
                             $utmReportFromSite->setConversionToCallsFromSpecOrGaranty($value);
+                           //$I->see($value);
+                }
                         break;
                     //конверсия в обращения
                     case 15:
                         if($numOfColls == 42)
                             $utmReportFromSite->setConversionToTreatment($value);
-                        else if($numOfColls == 43)
+                        else if($numOfColls == 43){
                             $utmReportFromSite->setConversionToOrders($value);
+                            //$I->see($value);
+                        }
                         break;
                     //переходы из Я.директ
                     case 16:
                         if($numOfColls == 42)
                             $utmReportFromSite->setConversionFromYD($value);
                         else if($numOfColls == 43)
-                            $utmReportFromSite->setConversionToOrders($value);
+                            $utmReportFromSite->setConversionToTreatment($value);
                         break;
                     //Показы я.директ в поиске
                     case 17:
@@ -487,7 +542,7 @@ class UTMLabels {
                         break;
                     //Затраты РСЯ
                     case 21:
-                       
+
                         if($numOfColls == 42)
                             $utmReportFromSite->setCostsInRSY($value);
                         else if($numOfColls == 43)
@@ -495,89 +550,178 @@ class UTMLabels {
                         break;
                     // Переходы из Google Adwords
                     case 22:
-                        $utmReportFromSite->setConversionFromGoogleAdwords($value);
+
+                        if($numOfColls == 42)
+                            $utmReportFromSite->setConversionFromGoogleAdwords($value);
+                        else if($numOfColls == 43)
+                            $utmReportFromSite->setCostsInRSY($value);
+
                         break;
                     // Затраты в google adwords
                     case 23:
-                        $utmReportFromSite->setCostsGoogleAdwords($value);
+
+                        if($numOfColls == 42)
+                            $utmReportFromSite->setCostsGoogleAdwords($value);
+                        else if($numOfColls == 43)
+                            $utmReportFromSite->setConversionFromGoogleAdwords($value);
                         break;
                     // количество продаж
                     case 24:
-                        $utmReportFromSite->setNumOfSales($value);
+
+                        if($numOfColls == 42)
+                            $utmReportFromSite->setNumOfSales($value);
+                        else if($numOfColls == 43)
+                            $utmReportFromSite->setCostsGoogleAdwords($value);
                         break;
                     // конверсия из обращения в продажу
                     case 25:
-                        $utmReportFromSite->setConversionFromTreatmentToSale($value);
+
+                        if($numOfColls == 42)
+                            $utmReportFromSite->setConversionFromTreatmentToSale($value);
+                        else if($numOfColls == 43)
+                            $utmReportFromSite->setNumOfSales($value);
                         break;
                     // Цена продажи (САС)
                     case 26:
-                        $utmReportFromSite->setCostOfSaleCAC($value);
+
+                        if($numOfColls == 42)
+                            $utmReportFromSite->setCostOfSaleCAC($value);
+                        else if($numOfColls == 43)
+                            $utmReportFromSite->setConversionFromTreatmentToSale($value);
                         break;
                     // Обращения
                     case 27:
-                        $utmReportFromSite->setTreatment($value);
+                        if($numOfColls == 42)
+                            $utmReportFromSite->setTreatment($value);
+                        else if($numOfColls == 43)
+                            $utmReportFromSite->setCostOfSaleCAC($value);
                         break;
                     // Стоимость обращения
                     case 28:
-                        $utmReportFromSite->setCostOfTreatment($value);
+
+                        if($numOfColls == 42)
+                            $utmReportFromSite->setCostOfTreatment($value);
+                        else if($numOfColls == 43)
+                            $utmReportFromSite->setTreatment($value);
                         break;
                         // Сделки по звонкам
                     case 29:
-                        $utmReportFromSite->setOrdersOnCalls($value);
+
+                        if($numOfColls == 42)
+                            $utmReportFromSite->setOrdersOnCalls($value);
+                        else if($numOfColls == 43)
+                            $utmReportFromSite->setCostOfTreatment($value);
                         break;
                     //выручка по звонкам
                     case 30:
-                        $utmReportFromSite->setRevenueCalls($value);
+
+                        if($numOfColls == 42)
+                            $utmReportFromSite->setRevenueCalls($value);
+                        else if($numOfColls == 43)
+                            $utmReportFromSite->setOrdersOnCalls($value);
                         break;
                     //Общая выручка
                     case 31:
-                        $utmReportFromSite->setTotalRevenue($value);
+
+                        if($numOfColls == 42)
+                            $utmReportFromSite->setTotalRevenue($value);
+                        else if($numOfColls == 43)
+                            $utmReportFromSite->setRevenueCalls($value);
                         break;
                    //ROI
                     case 32:
-                        $utmReportFromSite->setROI($value);
+
+                        if($numOfColls == 42)
+                            $utmReportFromSite->setROI($value);
+                        else if($numOfColls == 43)
+                            $utmReportFromSite->setTotalRevenue($value);
                         break;
                     //ДРР
                     case 33:
-                        $utmReportFromSite->setDRR($value);
+
+                        if($numOfColls == 42)
+                            $utmReportFromSite->setDRR($value);
+                        else if($numOfColls == 43)
+                            $utmReportFromSite->setROI($value);
                         break;
 
                     //Показы в спецразмещения Я.директ
                     case 34:
-                        $utmReportFromSite->setShowsInSpecPlacement($value);
+
+                        if($numOfColls == 42)
+                            $utmReportFromSite->setShowsInSpecPlacement($value);
+                        else if($numOfColls == 43)
+                            $utmReportFromSite->setDRR($value);
                         break;
                     //Показы в гарантии Я.директ
                     case 35:
-                        $utmReportFromSite->setShowsInWarantyYD($value);
+
+                        if($numOfColls == 42)
+                            $utmReportFromSite->setShowsInWarantyYD($value);
+                        else if($numOfColls == 43)
+                            $utmReportFromSite->setShowsInSpecPlacement($value);
                         break;
                     //Соотношение показов Спец/Гарантия Я.Директ
                     case 36:
-                        $utmReportFromSite->setRationOfShowsOfSpecOrWarantyYD($value);
+
+                        if($numOfColls == 42)
+                            $utmReportFromSite->setRationOfShowsOfSpecOrWarantyYD($value);
+                        else if($numOfColls == 43)
+                            $utmReportFromSite->setShowsInWarantyYD($value);
                         break;
                     //Число посещений Я.Метрика
                     case 37:
-                        $utmReportFromSite->setNumOfVisitsYM($value);
+
+                        if($numOfColls == 42)
+                            $utmReportFromSite->setNumOfVisitsYM($value);
+                        else if($numOfColls == 43)
+                            $utmReportFromSite->setRationOfShowsOfSpecOrWarantyYD($value);
                         break;
                     //Отказы Я.Метрика %
                     case 38:
-                        $utmReportFromSite->setFailuresYM($value);
+
+                        if($numOfColls == 42)
+                            $utmReportFromSite->setFailuresYM($value);
+                        else if($numOfColls == 43)
+                            $utmReportFromSite->setNumOfVisitsYM($value);
                         break;
                         //Ср.длинна сессии Я.Метрика (сек)
                     case 39:
-                        $utmReportFromSite->setAverageLengthOfSessionYM($value);
+                        if($numOfColls == 42)
+                            $utmReportFromSite->setAverageLengthOfSessionYM($value);
+                        else if($numOfColls == 43)
+                            $utmReportFromSite->setFailuresYM($value);
                         break;
                         //Глубина просмотра Я.Метрика
                     case 40:
-                        $utmReportFromSite->setDepthOfViewYM($value);
+
+                        if($numOfColls == 42)
+                            $utmReportFromSite->setDepthOfViewYM($value);
+                        else if($numOfColls == 43)
+                            $utmReportFromSite->setAverageLengthOfSessionYM($value);
                         break;
                         //Цели Я.Метрики 1 (посещения) Активность аудитории
                     case 41:
-                        $utmReportFromSite->setGoalYMOne($value);
+
+//                        if($numOfColls == 42)
+//                            $utmReportFromSite->setGoalYMOne($value);
+//                        else
+                            if($numOfColls == 43)
+                            $utmReportFromSite->setDepthOfViewYM($value);
                         break;
                         //Цели Я.Метрики 2 (посещения) Загородка
-                    case 42:
-                        $utmReportFromSite->setGoalYMTwo($value);
-                        break;
+//                    case 42:
+//
+//                        if($numOfColls == 42)
+//                            $utmReportFromSite->setGoalYMTwo($value);
+//                        else if($numOfColls == 43)
+//                            $utmReportFromSite->setGoalYMOne($value);
+//                        break;
+
+//                    case 43:
+//                            $utmReportFromSite->setGoalYMTwo($value);
+//
+//                        break;
                     default:
                         break;
                 }
@@ -610,26 +754,28 @@ class UTMLabels {
      */
     public function generateUTMURI($currentUrl, $beginDate, $endDate, $tagFilter, $utmCampaign, $utmMedium, $utmContent, $utmSource,$utmTerm, $utmPositionType){
         $arrUrl = explode("?", $currentUrl);
-        $uriPartOne = $arrUrl[0];
+        $uriPartOne = $arrUrl[0].'?';
         $uriPartTwo = "";
 
-        $utmCampaignURI = self::getUTMPartURI($utmCampaign, self::UTM_CAMPAIGN, true);
+        $utmCampaignURI = self::getUTMPartURI($utmCampaign, self::UTM_CAMPAIGN);
         $uriPartTwo .= $utmCampaignURI;
 
-        $utmMediumURI = self::getUTMPartURI($utmMedium, self::UTM_MEDIUM, false);
+        $utmMediumURI = self::getUTMPartURI($utmMedium, self::UTM_MEDIUM);
         $uriPartTwo .= $utmMediumURI;
 
-        $utmContentURI = self::getUTMPartURI($utmContent, self::UTM_CONTENT, false);
+        $utmContentURI = self::getUTMPartURI($utmContent, self::UTM_CONTENT);
         $uriPartTwo .= $utmContentURI;
 
-        $utmSourceURI = self::getUTMPartURI($utmSource, self::UTM_SOURCE, false);
+        $utmSourceURI = self::getUTMPartURI($utmSource, self::UTM_SOURCE);
         $uriPartTwo .= $utmSourceURI;
 
-        $utmTermPartURI = self::getUTMPartURI($utmTerm, self::UTM_TERM, false);
+        $utmTermPartURI = self::getUTMPartURI($utmTerm, self::UTM_TERM);
         $uriPartTwo .= $utmTermPartURI;
 
-        $utmPositionTypePartURI = self::getUTMPartURI($utmPositionType, self::UTM_POSITION_TYPE, false);
+
+        $utmPositionTypePartURI = self::getUTMPartURI($utmPositionType, self::UTM_POSITION_TYPE);
         $uriPartTwo .= $utmPositionTypePartURI;
+
 
 
         $partTagURI = self::getPartOfUTMTagURI($tagFilter);
@@ -638,6 +784,7 @@ class UTMLabels {
 
 
         $uri = $uriPartOne . $uriPartTwo;
+        $uri = str_replace("?&","?", $uri);
 
         return $uri;
     }
@@ -647,11 +794,10 @@ class UTMLabels {
      * Метод возвращает часть uri parametr=value и т.д.
      * @param String $utmTagParamValues
      * @param String $utmTagNameParam
-     * @param Boolean $isUTMCampaign
      *
      * @return возвращает часть uri с параметрами
      */
-    public function getUTMPartURI($utmTagParamValues, $utmTagNameParam, $isUTMCampaign){
+    public function getUTMPartURI($utmTagParamValues, $utmTagNameParam){
         $utmPartPartURI = '';
         if(!empty($utmTagParamValues)){
             $utmTagURI ="";
@@ -659,15 +805,8 @@ class UTMLabels {
             if($pos !== 0){
                 $utmSourcePartURI =  explode(',', $utmTagParamValues);
                 for($i=0;$i<count($utmSourcePartURI); $i++){
-                    if($isUTMCampaign){
-                        if($i == 0 ){
-                            $utmTagURI .= "?" .  $utmTagNameParam . $utmSourcePartURI[$i];
-                        }else{
-                            $utmTagURI .= "&" .  $utmTagNameParam . $utmSourcePartURI[$i];
-                        }
-                    }else{
-                        $utmTagURI .=   $utmTagNameParam . $utmSourcePartURI[$i];
-                    }
+                   $utmTagURI .=   $utmTagNameParam . $utmSourcePartURI[$i];
+
                 }
             }else {
                 $utmTagURI .=   $utmTagNameParam . $utmTagParamValues;
@@ -683,7 +822,7 @@ class UTMLabels {
      * метод отдает кусок uri в зависимости от выбранного фильтра
      * @param String $tagFilter
      *
-     * return String
+     * @return String
      */
     public function getPartOfUTMTagURI($tagFilter){
         $utmTagURI = "";
@@ -705,7 +844,7 @@ class UTMLabels {
                 $utmTagURI = self::TAG_UTM_CONTENT;
                 break;
             case 'спецразмещение или гарантия':
-                $utmTagURI = self::TAG_UTM_CONTENT;
+                $utmTagURI = self::TAG_UTM_POSITION_TYPE;
                 break;
 
 

@@ -9,7 +9,8 @@ modules:
     enabled:
         - PhpBrowser:
             url: http://localhost/myapp
-            CURLOPT_TIMEOUT: 240
+            curl:
+              CURLOPT_TIMEOUT: 240
         - \Helper\Acceptance
         - Asserts
 

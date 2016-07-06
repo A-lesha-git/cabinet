@@ -104,8 +104,8 @@ class UtmTag {
         $report->setFailuresYM($utmReportTotalData['failures_YM']);
         $report->setAverageLengthOfSessionYM($utmReportTotalData['average_length_of_session_YM']);
         $report->setDepthOfViewYM($utmReportTotalData['depth_of_view_YM']);
-        $report->setGoalYMOne($utmReportTotalData['goal_YM_one']);
-        $report->setGoalYMTwo($utmReportTotalData['goal_YM_two']);
+//        $report->setGoalYMOne($utmReportTotalData['goal_YM_one']);
+//        $report->setGoalYMTwo($utmReportTotalData['goal_YM_two']);
 
 
         return $report;

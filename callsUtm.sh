@@ -1,0 +1,1 @@
+codecept run acceptance --env p1 --steps -g sourcesUtmCalls

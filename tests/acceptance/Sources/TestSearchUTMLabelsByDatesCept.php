@@ -104,7 +104,7 @@ $utmDataProvider =
 
         ]
     ],
-    
+
     /*
      * Negative tests
      */

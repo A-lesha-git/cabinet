@@ -69,7 +69,7 @@ $callsDataProvider = [
             'duration_low'=>0, 
             'duration_up'=>'50',
             'num_of_calls'=>23,
-                'calls' => 
+            'calls' =>
                 [
                     [
                     'call_id'=>'79169125050',

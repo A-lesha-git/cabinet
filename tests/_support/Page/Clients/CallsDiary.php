@@ -47,6 +47,9 @@ class CallsDiary
 
     public static $searchBtn = ".btn.btn-primary";
 
+    //локатор строки объекта звонка
+    public static $partOfCallObject =" //tr[@obj='tr_";
+
 
     public function __construct(\Codeception\Actor $I)
     {
@@ -317,6 +320,45 @@ class CallsDiary
         }
         
         return $this;
+    }
+
+    /* Метод проверяет что на странице
+     * присутствуют id звонков
+     *
+     * @param array() $arrId
+     *
+     */
+    public function verifyThatCallsExistsById($utmCallUnit){
+        $I = $this->tester;
+
+        $numOfCalls = $utmCallUnit['num_of_calls'];
+        //т.к. локаторы в данном конкретном случае не работают :/
+        //$rows = $I->grabMultiple("//td[@id='rightpanel']/div/table/tbody/tr/td/div[8]/div/table[2]/tbody/tr");
+        // $I->assertEquals(count($arrId), count($rows));
+        // проверяем другим способом, что не подгрузилось звонков больше чем нужно
+        $impossibleNumOfCalls=$numOfCalls+1;
+        $I->dontSeeElement(self::$partOfCallObject . $impossibleNumOfCalls . "']");
+
+        $callUnitFromSite = array();
+        $callsIdDelimeted = "";
+        $callsIdArr = explode(",",$utmCallUnit['calls_id']);
+
+        for($i=0;$i<$numOfCalls;$i++){
+            $I->seeElement("//div[@id='rating_" . $callsIdArr[$i] . "']");
+            $idFromSite = $I->grabAttributeFrom("//div[@id='rating_" . $callsIdArr[$i] . "']", 'id');
+            $idFromSite = str_replace("rating_", "", $idFromSite);
+            if($i == ($numOfCalls - 1))
+                $callsIdDelimeted .=  $idFromSite;
+            else
+                $callsIdDelimeted .=  $idFromSite . ",";
+        }
+        $callUnitFromSite['num_of_calls'] = $numOfCalls;
+        $callUnitFromSite['calls_id'] = $callsIdDelimeted;
+
+        $I->assertEquals($utmCallUnit,$callUnitFromSite);
+
+        return $this;
+
     }
    
     /*

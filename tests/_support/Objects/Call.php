@@ -88,6 +88,15 @@ class Call {
         
         return $call;
     }
+
+    public static function createCallID(array $callsFilterData){
+        $call = new static;
+
+        $call->setId($callsFilterData['call_id']);
+
+
+        return $call;
+    }
     
     
     public  function setId($id){
